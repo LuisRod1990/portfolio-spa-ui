@@ -1,9 +1,7 @@
 export const environment = {
   production: false,
-  //authApi: 'http://ec2-3-142-208-223.us-east-2.compute.amazonaws.com:5000/api/auth',
-  //dataApi: 'http://ec2-3-142-208-223.us-east-2.compute.amazonaws.com:5001/api/Portfolio',
-  authApi: 'https://localhost:44339/api/auth',
-  dataApi: 'https://localhost:44347/api/Portfolio',
+  authApi: 'http://ec2-3-142-208-223.us-east-2.compute.amazonaws.com:5000/api/auth',
+  dataApi: 'http://ec2-3-142-208-223.us-east-2.compute.amazonaws.com:5001/api/Portfolio',
   endpoints: {
     login: '/login',
     refresh: '/refresh',
