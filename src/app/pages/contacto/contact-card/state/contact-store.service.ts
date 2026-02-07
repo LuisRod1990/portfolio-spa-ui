@@ -25,9 +25,7 @@ export class ContactStoreService {
 
     this.dataService.getContacto(1).subscribe({
       next: (contactos) => {
-        // La API devuelve un arreglo, tomamos el primer elemento
         const contacto = Array.isArray(contactos) ? contactos[0] : contactos;
-        // Normalizamos la fecha con validación
         const contactoNormalizado = {
           ...contacto,
           fechanacimiento: contacto?.fechanacimiento
@@ -43,19 +41,17 @@ export class ContactStoreService {
       },
       error: (err) => {
         console.error('Error al cargar contacto:', err);
+
+        // Guardamos un mensaje claro en el estado
         this.stateSubject.next({
           loading: false,
-          error: 'Error al cargar contacto',
+          error: 'Error al cargar contacto. Revisa la API o parámetros.',
           contacto: null
         });
       }
     });
   }
 
-  /**
-   * Intenta parsear la fecha de forma segura.
-   * Si el formato es inválido, devuelve null en vez de romper.
-   */
   private parseFecha(fecha: any): Date | null {
     try {
       const parsed = new Date(fecha);
