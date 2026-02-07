@@ -1,0 +1,165 @@
+<div class="perfil-container" [class.dark-theme]="state.isDarkTheme" *ngIf="state$ | async as state">
+
+  <nav cdkDrag class="floating-navbar" [class.collapsed]="!state.menuOpen">
+    <!-- Botón hamburguesa -->
+    <button mat-icon-button (click)="toggleMenu()" class="menu-btn">
+      <mat-icon>{{ state.menuOpen ? 'close' : 'menu' }}</mat-icon>
+    </button>
+
+    <div class="nav-buttons" [class.open]="state.menuOpen">
+      <!-- Botón Layout 1 -->
+      <button (click)="changeLayout('two-top-one-bottom')" matTooltip="Layout 1">
+        <mat-icon>view_quilt</mat-icon>
+      </button>
+      <!-- Botón Layout 2 -->
+      <button (click)="changeLayout('two-columns')" matTooltip="Layout 2">
+        <mat-icon>view_column</mat-icon>
+      </button>
+      <!-- Botón Layout 3 -->
+      <button (click)="changeLayout('two-right-one-left')" matTooltip="Layout 3">
+        <mat-icon>auto_awesome_mosaic</mat-icon>
+      </button>
+      <!-- Toggle Dark/Light con icono -->
+      <label class="toggle-switch">
+        <input type="checkbox" [checked]="state.isDarkTheme" (change)="toggleTheme()" />
+        <span class="slider"><span class="icon">{{ state.isDarkTheme ? '🌙' : '☀️' }}</span></span>
+      </label>
+    </div>
+  </nav>
+
+  @if (state.loading) {
+    <app-loading message="Cargando datos..."></app-loading>
+  } @else {
+    <div class="perfil-container">
+      <div class="perfil-layout" [ngClass]="state.selectedLayout">
+
+        <!-- Distribución 1: dos arriba y uno abajo -->
+        @if (state.selectedLayout === 'two-top-one-bottom') {
+          <div class="top-left neumorphic">
+            <div class="section-content skills-rotator">
+              @for (skill of state.skills.slice(state.currentIndex, state.currentIndex + state.groupSize); track skill.skillid; let i = $index) {
+                <div class="skill-highlight fade-inAptitud" [style.animation-delay]="i * 0.2 + 's'">
+                  <div class="skill-icon-wrapper">
+                    <img [src]="skill.urlicon" alt="{{ skill.nombresskill }}" class="skill-icon-large" />
+                  </div>
+                  <div class="skill-info">
+                    <h3 class="skill-nombre">{{ skill.nombresskill }}</h3>
+                    <p class="skill-tiempo">({{ skill.nivel }}. {{ skill.tiempoexperiencia }})</p>
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+
+          <div class="top-right neumorphic">
+            <div class="section-content">
+              @for (aptitud of state.aptitudes; track aptitud.nombreaptitud; let i = $index) {
+                <div class="aptitud-item fade-inAptitud" [style.animation-delay]="i * 0.4 + 's'">
+                  <span class="aptitud-nombre">{{ aptitud.nombreaptitud }}</span>
+                  <span class="aptitud-stars">
+                    @for (star of [].constructor(+aptitud.nivel); track $index) {
+                      <mat-icon class="neumorphic-star">star</mat-icon>
+                    }
+                  </span>
+                </div>
+              }
+            </div>
+          </div>
+
+          <div class="bottom section-card neumorphic">
+            <div class="section-content horizontal-experiencias">
+              @for (exp of state.experiencias; track exp.experiencia; let i = $index) {
+                <div class="experiencia-card neumorphic fade-inAptitud" [style.animation-delay]="i * 0.3 + 's'">
+                  <div class="experiencia-total">+{{ exp.total }}</div>
+                  <br>
+                  <div class="experiencia-nombre">{{ exp.experiencia }}</div>
+                </div>
+              }
+            </div>
+          </div>
+        }
+
+        <!-- Distribución 2: dos columnas -->
+        @if (state.selectedLayout === 'two-columns') {
+          <div class="left neumorphic">
+            <div class="section-content skills-rotator">
+              @for (skill of state.skills.slice(state.currentIndex, state.currentIndex + state.groupSize); track skill.skillid; let i = $index) {
+                <div class="skill-highlight fade-inAptitud" [style.animation-delay]="i * 0.2 + 's'">
+                  <div class="skill-icon-wrapper">
+                    <img [src]="skill.urlicon" alt="{{ skill.nombresskill }}" class="skill-icon-large" />
+                  </div>
+                  <div class="skill-info">
+                    <h3 class="skill-nombre">{{ skill.nivel }}</h3>
+                    <p class="skill-tiempo">({{ skill.tiempoexperiencia }})</p>
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+
+          <div class="right neumorphic">
+            <div class="section-content">
+              @for (aptitud of state.aptitudes; track aptitud.nombreaptitud; let i = $index) {
+                <div class="aptitud-item fade-inAptitud" [style.animation-delay]="i * 0.4 + 's'">
+                  <span class="aptitud-nombre">{{ aptitud.nombreaptitud }}</span>
+                  <span class="aptitud-stars">
+                    @for (star of [].constructor(+aptitud.nivel); track $index) {
+                      <mat-icon class="neumorphic-star">star</mat-icon>
+                    }
+                  </span>
+                </div>
+              }
+            </div>
+          </div>
+        }
+
+        <!-- Distribución 3: dos a la derecha y uno a la izquierda -->
+        @if (state.selectedLayout === 'two-right-one-left') {
+          <div class="left neumorphic">
+            <div class="section-content horizontal-experiencias">
+              @for (exp of state.experiencias; track exp.experiencia; let i = $index) {
+                <div class="experiencia-card neumorphic fade-inAptitud" [style.animation-delay]="i * 0.3 + 's'">
+                  <div class="experiencia-total">+{{ exp.total }}</div>
+                  <br>
+                  <div class="experiencia-nombre">{{ exp.experiencia }}</div>
+                </div>
+              }
+            </div>
+          </div>
+
+          <div class="right-top neumorphic">
+            <div class="section-content">
+              @for (aptitud of state.aptitudes; track aptitud.nombreaptitud; let i = $index) {
+                <div class="aptitud-item fade-inAptitud" [style.animation-delay]="i * 0.4 + 's'">
+                  <span class="aptitud-nombre">{{ aptitud.nombreaptitud }}</span>
+                  <span class="aptitud-stars">
+                    @for (star of [].constructor(+aptitud.nivel); track $index) {
+                      <mat-icon class="neumorphic-star">star</mat-icon>
+                    }
+                  </span>
+                </div>
+              }
+            </div>
+          </div>
+
+          <div class="right-bottom neumorphic">
+            <div class="section-content skills-rotator">
+              @for (skill of state.skills.slice(state.currentIndex, state.currentIndex + state.groupSize); track skill.skillid; let i = $index) {
+                <div class="skill-highlight-small fade-inAptitud" [style.animation-delay]="i * 0.2 + 's'">
+                  <div class="skill-icon-wrapper">
+                    <img [src]="skill.urlicon" alt="{{ skill.nombresskill }}" class="skill-icon-large" />
+                  </div>
+                  <div class="skill-info">
+                    <h3 class="skill-nombre">{{ skill.nivel }}</h3>
+                    <p class="skill-tiempo">({{ skill.tiempoexperiencia }})</p>
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+        }
+
+      </div>
+    </div>
+  }
+</div>

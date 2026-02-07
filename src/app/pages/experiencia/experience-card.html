@@ -1,0 +1,82 @@
+<div class="experiencia-container">
+  <ng-container *ngIf="state$ | async as state">
+    @if (state.loading) {
+      <app-loading message="Cargando experiencias laborales..."></app-loading>
+    } @else if (state.error) {
+      <div class="error-message">
+        <mat-icon color="warn">error</mat-icon>
+        <span>{{ state.error }}</span>
+      </div>
+    } @else {
+      <div class="carousel-container">
+        <!-- Flecha izquierda -->
+        <button class="arrow left"
+                (click)="prev()"
+                [disabled]="currentIndex === 0"
+                matTooltip="Anterior">
+          &#9664;
+        </button>
+
+        <div class="experiencia-grid">
+          @for (group of visibleEmpresas; track group.empresa; let i = $index) {
+            <div class="experiencia-card neumorphic fade-in"
+                 [class.expanded]="group.expanded"
+                 [style.animation-delay]="i * 0.3 + 's'">
+
+              <div class="card-header">
+                <div class="card-header-left">
+                  <h2 class="empresa">{{ group.empresa }}</h2>
+                  <h3 class="puesto">{{ group.puesto }}</h3>
+                </div>
+                <div class="card-logo">
+                  <img [src]="group.proyectos[0].urllogo" alt="{{ group.empresa }} logo" />
+                </div>
+              </div>
+
+              <button class="expand-btn"
+                      [matTooltip]="group.expanded ? 'Ocultar Detalles...' : 'Ver Detalles...'"
+                      (click)="toggleExpand(group)">
+                {{ group.expanded ? '-' : '+' }}
+              </button>
+
+              <!-- Contenido expandido -->
+              @if (group.expanded) {
+                <div class="proyectos" [class.loading]="group.loadingExpand">
+                  @if (group.loadingExpand) {
+                    <app-loading></app-loading>
+                  }
+
+                  <p class="fecha-experiencia">
+                    {{ group.proyectos[0]?.fechainicio | date:'mediumDate' }} -
+                    {{ group.proyectos[0]?.fechafin | date:'mediumDate' }}
+                  </p>
+
+                  @for (proj of group.proyectos; track proj.proyectoid) {
+                    <br>
+                    <div class="proyecto-item">
+                      <p class="proyecto"><strong>Proyecto:</strong> {{ proj.nombreproyecto }}</p>
+                      <p class="descripcion">{{ proj.descripcion }}</p>
+                      <p class="area"><strong>Área:</strong> {{ proj.area }}</p>
+                      <p class="tecnologia"><strong>Tecnología:</strong> {{ proj.tecnologia }}</p>
+                      <p class="fecha">
+                        {{ proj.fechainicio | date:'mediumDate' }} - {{ proj.fechafin | date:'mediumDate' }}
+                      </p>
+                    </div>
+                  }
+                </div>
+              }
+            </div>
+          }
+        </div>
+
+        <!-- Flecha derecha -->
+        <button class="arrow right"
+                (click)="next()"
+                [disabled]="currentIndex + 3 >= state.empresasAgrupadas.length"
+                matTooltip="Siguiente">
+          &#9654;
+        </button>
+      </div>
+    }
+  </ng-container>
+</div>

@@ -1,0 +1,68 @@
+<ng-container *ngIf="state$ | async as state">
+  @if (state.loading) {
+    <app-loading message="Cargando contacto..."></app-loading>
+  } @else if (state.error) {
+    <div class="error-message">
+      <mat-icon color="warn">error</mat-icon>
+      <span>{{ state.error }}</span>
+    </div>
+  } @else if (state.contacto) {
+    <mat-card class="contacto-card">
+      <mat-card-header class="card-header">
+        <div class="header-left">
+          <img [src]="state.contacto.foto || 'assets/images/foto-perfil.jpg'" alt="Foto de Portafolio" class="foto-perfil" />
+          <div class="card-header-info">
+            <mat-card-subtitle class="nombre">
+              {{ state.contacto.nombre }} {{ state.contacto.apellidos }}
+            </mat-card-subtitle>
+            <mat-card-subtitle class="titulo">
+              {{ state.contacto.titulo ?? 'Sin título' }}
+            </mat-card-subtitle>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <div class="info-item-no-background" matTooltip="Correo Electrónico">
+            <span>{{ state.contacto.usuario }}</span>
+            <mat-icon>email</mat-icon>
+          </div>
+          <div class="info-item-no-background">
+            <span>{{ state.contacto.celular ?? 'Sin teléfono' }}</span>
+            <mat-icon>phone</mat-icon>
+          </div>
+          <div class="info-item-no-background">
+            <span>{{ state.contacto.direccion ?? 'Sin dirección' }}</span>
+            <mat-icon>location_on</mat-icon>
+          </div>
+        </div>
+      </mat-card-header>
+
+      <mat-card-content class="card-content">
+        <section class="info-grid">
+          <div class="info-line">
+            <div class="info-item">
+              <mat-icon>calendar_today</mat-icon>
+              <span>{{ state.contacto.fechanacimiento | date:'longDate' }}</span>
+            </div>
+            <div class="info-item">
+              <mat-icon>badge</mat-icon>
+              <span>RFC: {{ state.contacto.rfc }}</span>
+            </div>
+            <div class="info-item">
+              <mat-icon>fingerprint</mat-icon>
+              <span>CURP: {{ state.contacto.curp }}</span>
+            </div>
+            <div class="info-item">
+              <mat-icon>verified</mat-icon>
+              <span>Cédula: {{ state.contacto.cedula }}</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="resumen">
+          <p>{{ state.contacto.resumenperfil }}</p>
+        </section>
+      </mat-card-content>
+    </mat-card>
+  }
+</ng-container>

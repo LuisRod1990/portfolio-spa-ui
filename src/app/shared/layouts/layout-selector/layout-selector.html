@@ -1,0 +1,34 @@
+<nav cdkDrag class="floating-toolbar" [class.collapsed]="!menuOpen">
+<!-- Botón inicial (menu/close) -->
+<button mat-icon-button (click)="toggleMenu()" class="menu-btn">
+<mat-icon>{{ menuOpen ? 'close' : 'menu' }}</mat-icon>
+</button>
+
+<!-- Botones desplegables -->
+<div class="toolbar-buttons" [class.open]="menuOpen" [class.closing]="closing">
+<button mat-icon-button class="toolbar-btn" (click)="changeLayout(LayoutType.TWO_TOP_ONE_BOTTOM)">
+<mat-icon>view_quilt</mat-icon>
+</button>
+<button mat-icon-button class="toolbar-btn" (click)="changeLayout(LayoutType.TWO_COLUMNS)">
+<mat-icon>view_column</mat-icon>
+</button>
+<button mat-icon-button class="toolbar-btn" (click)="changeLayout(LayoutType.TWO_RIGHT_ONE_LEFT)">
+<mat-icon>view_sidebar</mat-icon>
+</button>
+
+<!-- Toggle tema -->
+<button mat-icon-button class="toolbar-btn" (click)="toggleTheme()">
+<mat-icon>{{ isDarkTheme ? 'dark_mode' : 'light_mode' }}</mat-icon>
+</button>
+
+<!-- Último botón decorativo -->
+<button mat-icon-button class="toolbar-btn drag-indicator">
+<mat-icon>open_with</mat-icon>
+</button>
+</div>
+</nav>
+
+<div class="layout-container"
+[attr.class]="'layout-container ' + layoutType + ' ' + (isDarkTheme ? 'dark-theme' : 'light-theme')">
+<!-- Aquí irán tus secciones según el layout elegido -->
+</div>

@@ -1,0 +1,115 @@
+.floating-toolbar {
+position: fixed;
+bottom: 1rem;
+left: 1rem;
+display: flex;
+flex-direction: row; /* horizontal */
+align-items: center;
+z-index: 1000;
+padding: 6px 8px;
+border-radius: 8px;
+background: #2a2a2a;
+box-shadow: 2px 2px 5px #1a1a1a, -2px -2px 5px #3a3a3a;
+transition: all 0.3s ease;
+}
+
+.menu-btn {
+flex: 0;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.toolbar-buttons {
+display: flex;
+flex-direction: row; /* horizontal */
+gap: 1rem;
+max-width: 0; /* oculto */
+overflow: hidden;
+opacity: 0;
+transform: translateX(-10px);
+transition: max-width 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+margin-left: 0.8rem;
+}
+
+.toolbar-buttons.open {
+max-width: 500px; /* suficiente para mostrar todos */
+opacity: 1;
+transform: translateX(0);
+animation: fadeSlideIn 0.5s ease-out forwards;
+}
+
+.toolbar-buttons.closing {
+animation: fadeSlideOut 0.4s ease-in forwards;
+}
+
+@keyframes fadeSlideIn {
+from {
+opacity: 0;
+transform: translateX(-15px);
+}
+to {
+opacity: 1;
+transform: translateX(0);
+}
+}
+
+@keyframes fadeSlideOut {
+from {
+opacity: 1;
+transform: translateX(0);
+}
+to {
+opacity: 0;
+transform: translateX(-15px);
+}
+}
+
+.toolbar-btn {
+width: 40px;
+height: 40px;
+border: none;
+border-radius: 8px;
+background: #3c3c3c;
+box-shadow: 2px 2px 4px #1a1a1a, -2px -2px 4px #3a3a3a;
+cursor: pointer;
+display: flex;
+justify-content: center;
+align-items: center;
+transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.toolbar-btn:hover:not(.drag-indicator) {
+transform: scale(1.1);
+box-shadow: inset 2px 2px 4px rgba(255, 255, 255, 0.1),
+inset -2px -2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.toolbar-btn mat-icon {
+color: #bebebe;
+font-size: 24px;
+}
+
+.drag-indicator {
+pointer-events: none; /* no clickeable */
+cursor: default;
+opacity: 0.9;
+}
+
+/* Light theme */
+.light-theme {
+background: #f0f0f0;
+box-shadow: 8px 8px 16px #bebebe, -8px -8px 16px #ffffff;
+color: #333;
+}
+
+.light-theme .toolbar-btn {
+background: #e0e0e0;
+box-shadow: 2px 2px 4px #bebebe, -2px -2px 4px #ffffff;
+}
+
+.light-theme .toolbar-btn mat-icon {
+color: #4a4a4a;
+}
+
+

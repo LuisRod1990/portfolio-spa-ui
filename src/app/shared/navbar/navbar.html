@@ -1,0 +1,24 @@
+<nav cdkDrag class="floating-navbar" [class.collapsed]="!menuOpen">
+  <!-- Botón hamburguesa -->
+  <button mat-icon-button (click)="toggleMenu()" class="menu-btn">
+    <mat-icon>{{ menuOpen ? 'close' : 'menu' }}</mat-icon>
+  </button>
+
+  <!-- Botones desplegables -->
+  <div class="nav-buttons" [class.open]="menuOpen">
+    <button mat-icon-button class="menu-btn" matTooltip="Contacto" routerLink="/contacto">
+      <mat-icon>person</mat-icon>
+    </button>
+    <button mat-icon-button class="menu-btn" matTooltip="Experiencia" routerLink="/experiencia">
+      <mat-icon>work</mat-icon>
+    </button>
+    <button mat-icon-button class="menu-btn" matTooltip="Aptitudes" routerLink="/aptitudes">
+      <mat-icon>devices</mat-icon>
+    </button>
+
+    <!-- Último botón decorativo -->
+    <button mat-icon-button class="drag-indicator">
+      <mat-icon>open_with</mat-icon>
+    </button>
+  </div>
+</nav>

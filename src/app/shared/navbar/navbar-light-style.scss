@@ -1,0 +1,75 @@
+
+.floating-navbar {
+  position: fixed;
+  top: 2rem;
+  right: 0%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column; /* vertical */
+  align-items: stretch;
+  z-index: 1000;
+  padding: 6px 8px;
+  border-radius: 8px;
+  background: #f9f9f9; /* fondo claro */
+  box-shadow: 2px 2px 5px #d0d0d0, -2px -2px 5px #ffffff; /* sombras suaves */
+  transition: all 0.3s ease;
+}
+
+.menu-btn {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f0f0f0;
+  border-radius: 8px;
+  box-shadow: 2px 2px 4px #d0d0d0, -2px -2px 4px #ffffff;
+}
+
+.nav-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-height: 0; /* oculto */
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: max-height 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+  margin-top: 0.8rem; /* espacio entre hamburguesa y primer botón */
+}
+
+.nav-buttons.open {
+  max-height: 500px; /* suficiente para mostrar todos */
+  opacity: 1;
+  transform: translateY(0);
+}
+
+button[mat-icon-button] {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 8px;
+  background: #f0f0f0;
+  box-shadow: 2px 2px 4px #d0d0d0, -2px -2px 4px #ffffff;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button[mat-icon-button]:hover:not(.drag-indicator) {
+  transform: scale(1.1);
+  box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.1),
+  inset -2px -2px 4px rgba(255, 255, 255, 0.7);
+}
+
+button[mat-icon-button] mat-icon {
+  color: #4a4a4a; /* íconos oscuros sobre fondo claro */
+  font-size: 24px;
+}
+
+.drag-indicator {
+  pointer-events: none; /* no clickeable */
+  cursor: default;
+  opacity: 0.9; /* tenue pero mantiene color original */
+}
