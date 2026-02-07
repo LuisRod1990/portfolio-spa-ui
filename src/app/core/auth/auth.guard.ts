@@ -34,7 +34,12 @@ export class AuthGuard {
         }),
         catchError(err => {
           console.error('Login API falló o tardó demasiado:', err);
-          this.router.navigate(['/login']); // fallback al login manual
+
+          // Solo redirige si el backend devuelve 401
+          if (err.status === 401) {
+            this.router.navigate(['/login']);
+          }
+
           return of(false);
         })
       );
@@ -52,8 +57,14 @@ export class AuthGuard {
             return true;
           }),
           catchError(err => {
-            this.tokenStorage.clear();
-            this.router.navigate(['/login']);
+            console.error('Error al refrescar token:', err);
+
+            // Solo redirige si el backend devuelve 401
+            if (err.status === 401) {
+              this.tokenStorage.clear();
+              this.router.navigate(['/login']);
+            }
+
             return of(false);
           })
         );

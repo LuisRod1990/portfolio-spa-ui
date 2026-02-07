@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
-  authApi: 'https://portfolio-lrguez.duckdns.org/api/auth',
-  dataApi: 'https://portfolio-lrguez.duckdns.org/api/Portfolio',
+  authApi: 'https://localhost:44339/api/auth',
+  dataApi: 'https://localhost:44347/api/Portfolio',
   endpoints: {
     login: '/login',
     refresh: '/refresh',
