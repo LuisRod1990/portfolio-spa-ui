@@ -19,6 +19,16 @@ jobs:
     - name: Run Angular browser build
       run: npm run build -- --configuration production
 
+    # --- Clean target folder on EC2 ---
+    - name: Clean target folder
+      uses: appleboy/ssh-action@v0.1.7
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: ec2-user
+        key: ${{ secrets.EC2_SSH_KEY }}
+        script: |
+          rm -rf /var/www/angular-app/browser/*
+
     # --- Deploy to EC2 ---
     - name: Copy browser files to EC2
       uses: appleboy/scp-action@v0.1.7
@@ -28,7 +38,7 @@ jobs:
         key: ${{ secrets.EC2_SSH_KEY }}
         source: "dist/portafolio-spa-ui/browser/**"
         target: "/var/www/angular-app/browser/"
-        strip_components: 3   # 🔹 ignora las carpetas padre y copia solo los archivos
+        strip_components: 3
 
     - name: Restart Nginx on EC2
       uses: appleboy/ssh-action@v0.1.7
