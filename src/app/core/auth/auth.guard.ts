@@ -29,13 +29,12 @@ export class AuthGuard {
       }).pipe(
         timeout(15000),
         map(tokens => {
-          console.log('Login exitoso, tokens recibidos de la API');
           this.tokenStorage.saveTokens(tokens.accessToken, tokens.refreshToken);
-          return true; // ✅ deja pasar
+          return true; // deja pasar
         }),
         catchError(err => {
           console.error('Login API falló o tardó demasiado:', err);
-          this.router.navigate(['/login']); // 🔹 fallback al login manual
+          this.router.navigate(['/login']); // fallback al login manual
           return of(false);
         })
       );
@@ -66,7 +65,6 @@ export class AuthGuard {
     }
 
     // Caso 3: Token válido → acceso permitido
-    console.log('Token válido, acceso permitido');
     return of(true);
   }
 }

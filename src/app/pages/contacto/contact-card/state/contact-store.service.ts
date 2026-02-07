@@ -16,20 +16,23 @@ export class ContactStoreService {
   constructor(private dataService: DataService) {}
 
   loadContacto(): void {
-    this.stateSubject.next({ ...this.stateSubject.value, loading: true, error: null });
+    // Indicar que empieza la carga
+    this.stateSubject.next({
+      ...this.stateSubject.value,
+      loading: true,
+      error: null
+    });
 
     this.dataService.getContacto(1).subscribe({
-      next: contactos => {
+      next: (contactos) => {
         // La API devuelve un arreglo, tomamos el primer elemento
         const contacto = Array.isArray(contactos) ? contactos[0] : contactos;
-
-        console.log('Contacto cargado (raw object):', contacto);
-        console.log('Contacto cargado (JSON):', JSON.stringify(contacto, null, 2));
-
-        // Normalizamos la fecha para que el pipe date funcione
+        // Normalizamos la fecha con validación
         const contactoNormalizado = {
           ...contacto,
-          fechanacimiento: new Date(contacto.fechanacimiento)
+          fechanacimiento: contacto?.fechanacimiento
+            ? this.parseFecha(contacto.fechanacimiento)
+            : null
         };
 
         this.stateSubject.next({
@@ -38,7 +41,7 @@ export class ContactStoreService {
           contacto: contactoNormalizado
         });
       },
-      error: err => {
+      error: (err) => {
         console.error('Error al cargar contacto:', err);
         this.stateSubject.next({
           loading: false,
@@ -47,5 +50,18 @@ export class ContactStoreService {
         });
       }
     });
+  }
+
+  /**
+   * Intenta parsear la fecha de forma segura.
+   * Si el formato es inválido, devuelve null en vez de romper.
+   */
+  private parseFecha(fecha: any): Date | null {
+    try {
+      const parsed = new Date(fecha);
+      return isNaN(parsed.getTime()) ? null : parsed;
+    } catch {
+      return null;
+    }
   }
 }

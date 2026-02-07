@@ -30,7 +30,7 @@ export class ContactCardComponent implements OnInit {
   constructor(private store: ContactStoreService) {}
 
   ngOnInit(): void {
-    this.state$ = this.store.state$;   // 🔹 conecta el observable
-    this.store.loadContacto();         // 🔹 dispara la carga
+    this.state$ = this.store.state$;
+    this.store.loadContacto();
   }
 }
