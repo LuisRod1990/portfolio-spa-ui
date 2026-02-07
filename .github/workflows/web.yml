@@ -26,7 +26,6 @@ jobs:
         host: ${{ secrets.EC2_HOST }}
         username: ec2-user
         key: ${{ secrets.EC2_SSH_KEY }}
-        # 🔹 Usa la ruta correcta del build
         source: "dist/portafolio-spa-ui/browser/*"
         target: "/var/www/angular-app/browser/"
 
