@@ -32,7 +32,6 @@ export class AuthGuard {
         }),
         catchError(err => {
           console.error('Login API falló o tardó demasiado:', err);
-          // ❌ ya no hay redirect, simplemente bloquea acceso
           return of(false);
         })
       );
@@ -52,13 +51,11 @@ export class AuthGuard {
           catchError(err => {
             console.error('Error al refrescar token:', err);
             this.tokenStorage.clear();
-            // ❌ ya no hay redirect, simplemente bloquea acceso
             return of(false);
           })
         );
       } else {
         this.tokenStorage.clear();
-        // ❌ ya no hay redirect
         return of(false);
       }
     }
