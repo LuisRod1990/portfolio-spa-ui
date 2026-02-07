@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { TokenStorageService } from './token-storage.service';
 import { AuthService } from './auth.service';
 import { environment } from '../../../environments/environment';
@@ -12,8 +11,7 @@ export class AuthGuard {
 
   constructor(
     private tokenStorage: TokenStorageService,
-    private authService: AuthService,
-    private router: Router
+    private authService: AuthService
   ) {}
 
   canActivate(): Observable<boolean> {
@@ -30,16 +28,11 @@ export class AuthGuard {
         timeout(15000),
         map(tokens => {
           this.tokenStorage.saveTokens(tokens.accessToken, tokens.refreshToken);
-          return true; // deja pasar
+          return true; // acceso permitido
         }),
         catchError(err => {
           console.error('Login API falló o tardó demasiado:', err);
-
-          // Solo redirige si el backend devuelve 401
-          if (err.status === 401) {
-            this.router.navigate(['/login']);
-          }
-
+          // ❌ ya no hay redirect, simplemente bloquea acceso
           return of(false);
         })
       );
@@ -58,19 +51,14 @@ export class AuthGuard {
           }),
           catchError(err => {
             console.error('Error al refrescar token:', err);
-
-            // Solo redirige si el backend devuelve 401
-            if (err.status === 401) {
-              this.tokenStorage.clear();
-              this.router.navigate(['/login']);
-            }
-
+            this.tokenStorage.clear();
+            // ❌ ya no hay redirect, simplemente bloquea acceso
             return of(false);
           })
         );
       } else {
         this.tokenStorage.clear();
-        this.router.navigate(['/login']);
+        // ❌ ya no hay redirect
         return of(false);
       }
     }
