@@ -26,8 +26,9 @@ jobs:
         host: ${{ secrets.EC2_HOST }}
         username: ec2-user
         key: ${{ secrets.EC2_SSH_KEY }}
-        source: "dist/portafolio-spa-ui/browser/*"
+        source: "dist/portafolio-spa-ui/browser/**"
         target: "/var/www/angular-app/browser/"
+        strip_components: 3   # 🔹 ignora las carpetas padre y copia solo los archivos
 
     - name: Restart Nginx on EC2
       uses: appleboy/ssh-action@v0.1.7
