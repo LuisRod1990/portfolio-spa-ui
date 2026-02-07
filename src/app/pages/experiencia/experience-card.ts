@@ -28,7 +28,7 @@ export class ExperienciaLaboralCard implements OnInit {
   }
 
   get visibleEmpresas(): any[] {
-    // 🔹 slice sobre empresas agrupadas
+    // slice sobre empresas agrupadas
     return this.store['stateSubject'].value.empresasAgrupadas.slice(this.currentIndex, this.currentIndex + 3);
   }
 
@@ -48,12 +48,12 @@ export class ExperienciaLaboralCard implements OnInit {
     group.expanded = !group.expanded;   // alterna de inmediato
     group.loadingExpand = true;         // activa loader visual
 
-    // 🔹 Forzar detección de cambios
+    // Forzar detección de cambios
     this.cd.detectChanges();
 
     setTimeout(() => {
       group.loadingExpand = false;
-      this.cd.detectChanges();          // 🔹 refresca al terminar loading
+      this.cd.detectChanges();          // refresca al terminar loading
     }, 600);
   }
 }

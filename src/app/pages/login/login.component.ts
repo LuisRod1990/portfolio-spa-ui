@@ -55,7 +55,7 @@ export class LoginComponent {
       next: tokens => {
         this.tokenStorage.saveTokens(tokens.accessToken, tokens.refreshToken);
         this.loading = false;
-        this.router.navigate(['/']); // 🔹 redirige al home
+        this.router.navigate(['/']); // redirige al home
       },
       error: err => {
         console.error('Login error:', err);

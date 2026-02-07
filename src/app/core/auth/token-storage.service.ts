@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 export class TokenStorageService {
   private TOKEN_KEY = 'auth';
 
-  // 🔹 Subject para emitir cambios de token en tiempo real
+  // Subject para emitir cambios de token en tiempo real
   private tokenSubject = new BehaviorSubject<string | null>(this.getAccessToken());
   token$ = this.tokenSubject.asObservable();
 
@@ -34,12 +34,12 @@ export class TokenStorageService {
       })
     );
 
-    // 🔹 Emitimos el nuevo token para que otros servicios lo detecten
+    // Emitimos el nuevo token para que otros servicios lo detecten
     this.tokenSubject.next(accessToken);
   }
 
   clear(): void {
     localStorage.removeItem(this.TOKEN_KEY);
-    this.tokenSubject.next(null); // 🔹 avisamos que ya no hay token
+    this.tokenSubject.next(null); // avisamos que ya no hay token
   }
 }

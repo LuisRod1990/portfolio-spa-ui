@@ -20,13 +20,13 @@ export class ContactStoreService {
 
     this.dataService.getContacto(1).subscribe({
       next: contactos => {
-        // 🔹 La API devuelve un arreglo, tomamos el primer elemento
+        // La API devuelve un arreglo, tomamos el primer elemento
         const contacto = Array.isArray(contactos) ? contactos[0] : contactos;
 
         console.log('Contacto cargado (raw object):', contacto);
         console.log('Contacto cargado (JSON):', JSON.stringify(contacto, null, 2));
 
-        // 🔹 Normalizamos la fecha para que el pipe date funcione
+        // Normalizamos la fecha para que el pipe date funcione
         const contactoNormalizado = {
           ...contacto,
           fechanacimiento: new Date(contacto.fechanacimiento)

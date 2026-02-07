@@ -6,9 +6,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCardModule } from '@angular/material/card';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { ContactCardComponent } from './pages/contacto/contact-card/contact-card';
-import { LoginComponent } from './pages/login/login.component';
-import { AuthGuard } from './core/auth/auth.guard';
 import { NavbarComponent } from './shared/navbar/navbar';
 
 @Component({
