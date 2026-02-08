@@ -30,7 +30,6 @@ export class DataService {
   getExperienciaLaboral(id: number): Observable<ExperienciaLaboral[]> {
     return this.http.get<ExperienciaLaboral[]>(`${environment.dataApi}${environment.endpoints.getExperiencia}/${id}`)
   }
-
   /*
   getProyectos(): Observable<any[]> {
     return this.http.get<any[]>(`${environment.dataApi}${environment.endpoints.getProyectos}`);
