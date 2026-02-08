@@ -1,188 +1,189 @@
-/* Contacto con diseño light neumórfico */
-.contacto-card {
-  width: 100vw;        /* ancho completo de la ventana */
-  height: 100vh;       /* alto completo de la ventana */
-  margin: 0;           /* sin márgenes */
-  padding: 2rem;       /* espacio interno */
-  border-radius: 20px;
-  background: #e0e0e0;
-  box-shadow: 9px 9px 16px #bebebe, -9px -9px 16px #ffffff;
-  transition: transform 0.3s ease-in-out;
-  overflow-wrap: break-word;
-  text-shadow: 1px 1px 2px #fff, -1px -1px 2px #aaa;
-  box-sizing: border-box;
-}
 
-.contacto-card:hover {
-  transform: translateY(-5px);
-}
+  /* Contacto con diseño light neumórfico */
+  .contacto-card {
+    width: 100vw;        /* ancho completo de la ventana */
+    height: 100vh;       /* alto completo de la ventana */
+    margin: 0;           /* sin márgenes */
+    padding: 2rem;       /* espacio interno */
+    border-radius: 20px;
+    background: #e0e0e0;
+    box-shadow: 9px 9px 16px #bebebe, -9px -9px 16px #ffffff;
+    transition: transform 0.3s ease-in-out;
+    overflow-wrap: break-word;
+    text-shadow: 1px 1px 2px #fff, -1px -1px 2px #aaa;
+    box-sizing: border-box;
+  }
 
-/* Header con foto a la izquierda y datos a la derecha */
-.card-header {
-    position: relative; /* 👈 habilita posicionamiento absoluto dentro */
+  .contacto-card:hover {
+    transform: translateY(-5px);
+  }
+
+  /* Header con foto a la izquierda y datos a la derecha */
+  .card-header {
+      position: relative; /* 👈 habilita posicionamiento absoluto dentro */
+      display: flex;
+      justify-content: flex-start; /* foto y nombre a la izquierda */
+      align-items: flex-start;
+      padding: 1rem;
+      min-height: 120px; /* 👈 da espacio vertical */
+      gap: 1rem;
+      margin-bottom: .5rem;
+      padding: .5rem 1rem;
+      border-radius: 12px;
+      background: #e0e0e0;
+      box-shadow: 6px 6px 12px #bebebe, -6px -6px 12px #ffffff;
+      box-sizing: border-box;
+  }
+
+
+
+  .header-right {
+    position: absolute; /* 👈 lo sacamos del flujo */
+    bottom: 16px;       /* 👈 fijo abajo */
+    right: 16px;        /* 👈 fijo a la derecha */
     display: flex;
-    justify-content: flex-start; /* foto y nombre a la izquierda */
-    align-items: flex-start;
-    padding: 1rem;
-    min-height: 120px; /* 👈 da espacio vertical */
+    flex-direction: column;
+    align-items: flex-end;
+    font-size: smaller;
+  }
+
+
+  .header-left {
+    display: flex;
+    align-items: flex-end;
     gap: 1rem;
-    margin-bottom: .5rem;
-    padding: .5rem 1rem;
-    border-radius: 12px;
+  }
+
+
+  /* Foto perfil */
+  .foto-perfil {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
     background: #e0e0e0;
     box-shadow: 6px 6px 12px #bebebe, -6px -6px 12px #ffffff;
-    box-sizing: border-box;
-}
+    padding: 6px;
+    margin-right: 1rem;
+  }
 
-
-
-.header-right {
-  position: absolute; /* 👈 lo sacamos del flujo */
-  bottom: 16px;       /* 👈 fijo abajo */
-  right: 16px;        /* 👈 fijo a la derecha */
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  font-size: smaller;
-}
-
-
-.header-left {
-  display: flex;
-  align-items: flex-end;
-  gap: 1rem;
-}
-
-
-/* Foto perfil */
-.foto-perfil {
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
-  border-radius: 50%;
-  background: #e0e0e0;
-  box-shadow: 6px 6px 12px #bebebe, -6px -6px 12px #ffffff;
-  padding: 6px;
-  margin-right: 1rem;
-}
-
-/* Bloque de nombre y título */
-.card-header-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.nombre {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #555;
-  text-shadow: 1px 1px 2px #fff, -1px -1px 2px #aaa;
-}
-
-.titulo {
-  font-size: 0.85rem;
-  color: #777;
-}
-
-/* Bloque de contacto a la derecha */
-.contact-info-top {
-  display: flex;
-  flex-direction: column; /* cada dato en su línea */
-  align-items: flex-end; /* 👈 alineados a la derecha */
-  gap: 4px;
-  font-size: 0.75rem; /* 👈 letra más pequeña */
-  color: #555;
-}
-
-/* Items sin fondo, alineados con íconos */
-.info-item-no-background {
-  display: flex;
-  align-items: center; /* 👈 ícono y texto alineados verticalmente */
-  gap: 6px;
-}
-
-.info-item-no-background mat-icon {
-  font-size: 14px; /* 👈 ícono más pequeño */
-  color: #1976d2; /* azul corporativo */
-}
-
-/* Línea de datos personales en una sola fila alineada a la derecha */
-.info-line {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end; /* 👈 empuja todos los elementos a la derecha */
-  align-items: center;
-  gap: 1rem;
-  margin: 1rem 0;
-  font-size: 0.85rem;
-  color: #444;
-  box-sizing: border-box;
-  flex-wrap: nowrap;
-}
-
-.info-line span {
-  display: inline-block;
-  background: #e0e0e0;
-  padding: 6px 10px;
-  border-radius: 8px;
-  box-shadow: 6px 6px 12px #bebebe, -6px -6px 12px #ffffff;
-  white-space: nowrap;
-}
-
-/* Info items con neumorfismo */
-.info-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 6px;
-  font-size: 0.85rem;
-  color: #444;
-  background: #e0e0e0;
-  padding: 1rem;
-  border-radius: 12px;
-  box-shadow: inset 2px 2px 4px #bebebe, inset -2px -2px 4px #ffffff;
-  box-sizing: border-box;
-}
-
-.info-item:hover {
-  transform: scale(1.02);
-  color: #000;
-}
-
-/* Resumen con neumorfismo */
-.resumen p {
-  font-size: 0.85rem;
-  line-height: 1.3;
-  color: #444;
-  background: #e0e0e0;
-  padding: 1rem;
-  border-radius: 12px;
-  box-shadow: inset 2px 2px 4px #bebebe, inset -2px -2px 4px #ffffff;
-  box-sizing: border-box;
-}
-
-/* Responsivo para móviles */
-@media (max-width: 768px) {
-  .card-header {
+  /* Bloque de nombre y título */
+  .card-header-info {
+    display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .foto-perfil {
-    margin-right: 0;
-    margin-bottom: 0.5rem;
-  }
-
-  .contact-info-top {
-    align-items: center; /* 👈 en móviles centrado */
-    text-align: center;
-  }
-
-  .info-line {
-    flex-wrap: wrap;
     justify-content: center;
-    gap: 0.5rem;
   }
-}
+
+  .nombre {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #555;
+    text-shadow: 1px 1px 2px #fff, -1px -1px 2px #aaa;
+  }
+
+  .titulo {
+    font-size: 0.85rem;
+    color: #777;
+  }
+
+  /* Bloque de contacto a la derecha */
+  .contact-info-top {
+    display: flex;
+    flex-direction: column; /* cada dato en su línea */
+    align-items: flex-end; /* 👈 alineados a la derecha */
+    gap: 4px;
+    font-size: 0.75rem; /* 👈 letra más pequeña */
+    color: #555;
+  }
+
+  /* Items sin fondo, alineados con íconos */
+  .info-item-no-background {
+    display: flex;
+    align-items: center; /* 👈 ícono y texto alineados verticalmente */
+    gap: 6px;
+  }
+
+  .info-item-no-background mat-icon {
+    font-size: 14px; /* 👈 ícono más pequeño */
+    color: #1976d2; /* azul corporativo */
+  }
+
+  /* Línea de datos personales en una sola fila alineada a la derecha */
+  .info-line {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end; /* 👈 empuja todos los elementos a la derecha */
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem 0;
+    font-size: 0.85rem;
+    color: #444;
+    box-sizing: border-box;
+    flex-wrap: nowrap;
+  }
+
+  .info-line span {
+    display: inline-block;
+    background: #e0e0e0;
+    padding: 6px 10px;
+    border-radius: 8px;
+    box-shadow: 6px 6px 12px #bebebe, -6px -6px 12px #ffffff;
+    white-space: nowrap;
+  }
+
+  /* Info items con neumorfismo */
+  .info-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+    font-size: 0.85rem;
+    color: #444;
+    background: #e0e0e0;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: inset 2px 2px 4px #bebebe, inset -2px -2px 4px #ffffff;
+    box-sizing: border-box;
+  }
+
+  .info-item:hover {
+    transform: scale(1.02);
+    color: #000;
+  }
+
+  /* Resumen con neumorfismo */
+  .resumen p {
+    font-size: 0.85rem;
+    line-height: 1.3;
+    color: #444;
+    background: #e0e0e0;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: inset 2px 2px 4px #bebebe, inset -2px -2px 4px #ffffff;
+    box-sizing: border-box;
+  }
+
+  /* Responsivo para móviles */
+  @media (max-width: 768px) {
+    .card-header {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .foto-perfil {
+      margin-right: 0;
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-info-top {
+      align-items: center; /* 👈 en móviles centrado */
+      text-align: center;
+    }
+
+    .info-line {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+  }
