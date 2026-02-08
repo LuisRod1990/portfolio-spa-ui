@@ -8,8 +8,6 @@
   background: #e0e0e0;
   box-shadow: 9px 9px 16px #bebebe, -9px -9px 16px #ffffff;
   transition: transform 0.3s ease-in-out;
-  overflow-wrap: break-word;
-  text-shadow: 1px 1px 2px #fff, -1px -1px 2px #aaa;
   box-sizing: border-box;
   font-size: 0.85rem;
 }
@@ -18,42 +16,25 @@
   transform: translateY(-5px);
 }
 
-/* Header con foto y datos */
+/* Header */
 .card-header {
   display: flex;
-  justify-content: space-between; /* 👈 mantiene izquierda/derecha */
-  align-items: flex-start;
+  flex-direction: column; /* 👈 primero fila con foto+nombre, luego contactos */
+  gap: 0.75rem;
   padding: 1rem;
-  min-height: 120px;
-  gap: 1rem;
-  margin-bottom: .5rem;
   border-radius: 12px;
   background: #e0e0e0;
   box-shadow: 6px 6px 12px #bebebe, -6px -6px 12px #ffffff;
   box-sizing: border-box;
-  flex-wrap: wrap; /* 👈 evita desbordes */
 }
 
-.header-left {
+/* Fila superior: foto + nombre/título */
+.header-top {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  flex: 1 1 auto;
-  min-width: 200px;
+  gap: 1rem;
 }
 
-.header-right {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.25rem;
-  font-size: 0.75rem;
-  flex: 1 1 auto;
-  min-width: 150px;
-  word-break: break-word; /* 👈 evita que se salga */
-}
-
-/* Foto perfil */
 .foto-perfil {
   width: 70px;
   height: 70px;
@@ -64,67 +45,63 @@
   padding: 4px;
 }
 
-/* Bloque de nombre y título */
 .card-header-info {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  flex-wrap: wrap;
 }
 
 .nombre {
   font-size: 1rem;
   font-weight: 600;
   color: #333;
-  text-shadow: 1px 1px 2px #fff, -1px -1px 2px #aaa;
 }
 
 .titulo {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: #555;
 }
 
-/* Items sin fondo */
+/* Bloque de contacto debajo */
+.header-right {
+  display: flex;
+  flex-direction: row; /* 👈 íconos + texto en fila */
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.8rem;
+}
+
 .info-item-no-background {
   display: flex;
-  align-items: center;
+  align-items: center; /* 👈 ícono y texto alineados */
   gap: 6px;
-  flex-wrap: wrap;
 }
 
 .info-item-no-background mat-icon {
-  font-size: 14px;
+  font-size: 16px;
   color: #1976d2;
 }
 
 /* Línea de datos personales */
 .info-line {
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
+  flex-wrap: wrap;
   gap: 0.75rem;
   margin: 1rem 0;
   font-size: 0.8rem;
   color: #444;
-  box-sizing: border-box;
-  flex-wrap: wrap;
 }
 
 .info-line span {
-  display: inline-block;
   background: #e0e0e0;
   padding: 4px 8px;
   border-radius: 8px;
   box-shadow: 6px 6px 12px #bebebe, -6px -6px 12px #ffffff;
-  white-space: nowrap;
 }
 
 /* Info items con neumorfismo */
 .info-item {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 6px;
   font-size: 0.8rem;
   color: #444;
@@ -132,8 +109,6 @@
   padding: 0.75rem;
   border-radius: 12px;
   box-shadow: inset 2px 2px 4px #bebebe, inset -2px -2px 4px #ffffff;
-  box-sizing: border-box;
-  flex-wrap: wrap;
 }
 
 .info-item:hover {
@@ -141,7 +116,7 @@
   color: #000;
 }
 
-/* Resumen con neumorfismo */
+/* Resumen */
 .resumen p {
   font-size: 0.8rem;
   line-height: 1.3;
@@ -150,34 +125,23 @@
   padding: 0.75rem;
   border-radius: 12px;
   box-shadow: inset 2px 2px 4px #bebebe, inset -2px -2px 4px #ffffff;
-  box-sizing: border-box;
 }
 
-/* Responsivo para móviles */
+/* Responsivo */
 @media (max-width: 768px) {
-  .card-header {
-    flex-direction: column;
-    align-items: flex-start;
-    text-align: left;
-  }
-
-  .header-left {
-    flex-direction: row;
+  .header-top {
+    flex-direction: column; /* 👈 foto arriba, nombre debajo en móvil */
     align-items: center;
-    gap: 0.5rem;
+    text-align: center;
   }
 
   .header-right {
-    align-items: flex-start;
-    text-align: left;
-    margin-top: 0.5rem;
-    font-size: 0.7rem;
-    width: 100%; /* 👈 ocupa todo el ancho en móvil */
+    justify-content: center;
+    font-size: 0.75rem;
   }
 
   .info-line {
-    justify-content: flex-start;
-    gap: 0.5rem;
+    justify-content: center;
     font-size: 0.75rem;
   }
 
