@@ -11,7 +11,7 @@
   overflow-wrap: break-word;
   text-shadow: 1px 1px 2px #fff, -1px -1px 2px #aaa;
   box-sizing: border-box;
-  font-size: 0.8rem; /* 👈 reduce todo el texto */
+  font-size: 0.85rem; /* 👈 tamaño base más pequeño */
 }
 
 .contacto-card:hover {
@@ -28,11 +28,16 @@
   min-height: 120px;
   gap: 1rem;
   margin-bottom: .5rem;
-  padding: .5rem 1rem;
   border-radius: 12px;
   background: #e0e0e0;
   box-shadow: 6px 6px 12px #bebebe, -6px -6px 12px #ffffff;
   box-sizing: border-box;
+}
+
+.header-left {
+  display: flex;
+  align-items: center; /* 👈 mantiene foto + nombre alineados */
+  gap: 1rem;
 }
 
 .header-right {
@@ -42,14 +47,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  font-size: smaller;
-}
-
-.header-left {
-  display: flex;
-  flex-direction: column; /* 👈 ahora en columna */
-  align-items: center;
-  gap: 0.5rem;
+  font-size: 0.75rem; /* 👈 más pequeño */
 }
 
 /* Foto perfil */
@@ -63,23 +61,22 @@
   padding: 6px;
 }
 
-/* Bloque de nombre y título debajo de la foto */
+/* Bloque de nombre y título */
 .card-header-info {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-top: 0.5rem;
+  justify-content: center;
 }
 
 .nombre {
-  font-size: 1.1rem; /* 👈 más grande que el resto */
+  font-size: 1rem; /* 👈 resalta un poco más */
   font-weight: 600;
   color: #333;
   text-shadow: 1px 1px 2px #fff, -1px -1px 2px #aaa;
 }
 
 .titulo {
-  font-size: 0.95rem; /* 👈 ligeramente menor que el nombre */
+  font-size: 0.9rem; /* 👈 ligeramente menor */
   color: #555;
 }
 
@@ -116,7 +113,7 @@
   font-size: 0.85rem;
   color: #444;
   box-sizing: border-box;
-  flex-wrap: nowrap;
+  flex-wrap: wrap; /* 👈 permite que no se encimen */
 }
 
 .info-line span {
@@ -137,7 +134,7 @@
   font-size: 0.85rem;
   color: #444;
   background: #e0e0e0;
-  padding: 1rem;
+  padding: 0.75rem; /* 👈 menos padding para móvil */
   border-radius: 12px;
   box-shadow: inset 2px 2px 4px #bebebe, inset -2px -2px 4px #ffffff;
   box-sizing: border-box;
@@ -164,30 +161,26 @@
 @media (max-width: 768px) {
   .card-header {
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start; /* 👈 mantiene encabezado ordenado */
+    text-align: left;
   }
 
-  .foto-perfil {
-    margin-bottom: 0.5rem;
+  .header-left {
+    flex-direction: row; /* 👈 foto + nombre siguen juntos */
+    align-items: center;
+    gap: 0.5rem;
   }
 
   .header-right {
     position: static;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
+    text-align: left;
     margin-top: 0.5rem;
-    font-size: 0.75rem;
-  }
-
-  .contact-info-top {
-    align-items: center;
-    text-align: center;
+    font-size: 0.7rem; /* 👈 aún más pequeño en móvil */
   }
 
   .info-line {
-    flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 0.5rem;
     font-size: 0.75rem;
   }
