@@ -11,7 +11,7 @@
   overflow-wrap: break-word;
   text-shadow: 1px 1px 2px #fff, -1px -1px 2px #aaa;
   box-sizing: border-box;
-  font-size: 0.85rem; /* 👈 tamaño base reducido */
+  font-size: 0.85rem;
 }
 
 .contacto-card:hover {
@@ -20,9 +20,8 @@
 
 /* Header con foto y datos */
 .card-header {
-  position: relative;
   display: flex;
-  justify-content: space-between; /* 👈 foto+nombre a la izq, datos a la der */
+  justify-content: space-between; /* 👈 mantiene izquierda/derecha */
   align-items: flex-start;
   padding: 1rem;
   min-height: 120px;
@@ -32,14 +31,14 @@
   background: #e0e0e0;
   box-shadow: 6px 6px 12px #bebebe, -6px -6px 12px #ffffff;
   box-sizing: border-box;
-  flex-wrap: wrap; /* 👈 evita encimado */
+  flex-wrap: wrap; /* 👈 evita desbordes */
 }
 
 .header-left {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  flex: 1 1 auto; /* 👈 permite que se ajuste */
+  flex: 1 1 auto;
   min-width: 200px;
 }
 
@@ -51,6 +50,7 @@
   font-size: 0.75rem;
   flex: 1 1 auto;
   min-width: 150px;
+  word-break: break-word; /* 👈 evita que se salga */
 }
 
 /* Foto perfil */
@@ -89,7 +89,7 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  flex-wrap: wrap; /* 👈 evita encimado */
+  flex-wrap: wrap;
 }
 
 .info-item-no-background mat-icon {
@@ -108,7 +108,7 @@
   font-size: 0.8rem;
   color: #444;
   box-sizing: border-box;
-  flex-wrap: wrap; /* 👈 permite que baje a otra línea */
+  flex-wrap: wrap;
 }
 
 .info-line span {
@@ -172,6 +172,7 @@
     text-align: left;
     margin-top: 0.5rem;
     font-size: 0.7rem;
+    width: 100%; /* 👈 ocupa todo el ancho en móvil */
   }
 
   .info-line {
