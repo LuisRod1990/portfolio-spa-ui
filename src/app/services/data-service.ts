@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 import { environment } from '../../environments/environment.development';
 import { Skill } from '../models/skills';
 import { Aptitud } from '../models/aptitud';
 import { Experiencia } from '../models/experiencia-total';
 import { ExperienciaLaboral } from '../models/experiencia-laboral';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,28 +15,56 @@ export class DataService {
   constructor(private http: HttpClient) {}
 
   getContacto(id: number): Observable<any> {
-    return this.http.get(`${environment.dataApi}${environment.endpoints.getContacto}/${id}`)
+    const body = { sp: environment.endpoints.getContacto, usuarioId: id };
+    console.log('DataService → preparando POST getContacto con body:', body);
+
+    return this.http.post<any>(environment.dataApi, body).pipe(
+      tap(response => {
+        console.log('DataService → respuesta cruda de la API:', response);
+        if (!response) {
+          console.warn('DataService → la respuesta vino vacía');
+        }
+      }),
+      catchError(err => {
+        console.error('DataService → error al llamar a la API getContacto');
+        console.error('Status:', err.status);
+        console.error('StatusText:', err.statusText);
+        console.error('Message:', err.message);
+        console.error('Error completo:', err);
+        return throwError(() => err);
+      })
+    );
   }
 
+
   getAptitudes(id: number): Observable<Aptitud[]> {
-    return this.http.get<Aptitud[]>(`${environment.dataApi}${environment.endpoints.getAptitudes}/${id}`)
+    const body = { sp: environment.endpoints.getAptitudes, usuarioId: id };
+    console.log('POST getAptitudes con body:', body);
+    return this.http.post<Aptitud[]>(environment.dataApi, body);
   }
 
   getSkills(id: number): Observable<Skill[]> {
-    return this.http.get<Skill[]>(`${environment.dataApi}${environment.endpoints.getSkills}/${id}`)
+    const body = { sp: environment.endpoints.getSkills, usuarioId: id };
+    console.log('POST getSkills con body:', body);
+    return this.http.post<Skill[]>(environment.dataApi, body);
   }
+
   getExperiencias(id: number): Observable<Experiencia[]> {
-    return this.http.get<Experiencia[]>(`${environment.dataApi}${environment.endpoints.getTotalExperiencia}/${id}`)
+    const body = { sp: environment.endpoints.getTotalExperiencia, usuarioId: id };
+    console.log('POST getExperiencias con body:', body);
+    return this.http.post<Experiencia[]>(environment.dataApi, body);
   }
 
   getExperienciaLaboral(id: number): Observable<ExperienciaLaboral[]> {
-    return this.http.get<ExperienciaLaboral[]>(`${environment.dataApi}${environment.endpoints.getExperiencia}/${id}`)
+    const body = { sp: environment.endpoints.getExperiencia, usuarioId: id };
+    console.log('POST getExperienciaLaboral con body:', body);
+    return this.http.post<ExperienciaLaboral[]>(environment.dataApi, body);
   }
-  /*
-  getProyectos(): Observable<any[]> {
-    return this.http.get<any[]>(`${environment.dataApi}${environment.endpoints.getProyectos}`);
-  }
-    */
 
-  // ... demás endpoints
+  // Ejemplo si luego agregas formación:
+  // getFormacion(id: number): Observable<Formacion[]> {
+  //   const body = { sp: environment.endpoints.getFormacion, usuarioId: id };
+  //   console.log('POST getFormacion con body:', body);
+  //   return this.http.post<Formacion[]>(environment.dataApi, body);
+  // }
 }
