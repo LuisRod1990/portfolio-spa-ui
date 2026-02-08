@@ -10,6 +10,6 @@ export const routes: Routes = [
   { path: 'contacto', component: ContactCardComponent, canActivate: [AuthGuard] },
   { path: 'experiencia', component: ExperienciaLaboralCard },
   { path: 'aptitudes', component: AptitudesCard },
-  { path: 'login', component: LoginComponent },
+  //{ path: 'login', component: LoginComponent },
   { path: '**', redirectTo: '' }
 ];

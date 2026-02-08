@@ -28,10 +28,11 @@ export class AuthGuard {
         timeout(15000),
         map(tokens => {
           this.tokenStorage.saveTokens(tokens.accessToken, tokens.refreshToken);
+          console.log('Token guardado:', tokens.accessToken);
           return true; // acceso permitido
         }),
         catchError(err => {
-          console.error('Login API falló o tardó demasiado:', err);
+          console.error('Auth API falló o tardó demasiado:', err);
           return of(false);
         })
       );
@@ -42,6 +43,7 @@ export class AuthGuard {
       const refreshToken = this.tokenStorage.getRefreshToken();
 
       if (refreshToken) {
+        console.log('Token expirado, intentando refresh con refresh token...');
         return this.authService.refreshToken(refreshToken).pipe(
           timeout(5000),
           map(tokens => {

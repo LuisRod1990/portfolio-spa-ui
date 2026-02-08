@@ -30,7 +30,10 @@ export class ContactCardComponent implements OnInit {
   constructor(private store: ContactStoreService) {}
 
   ngOnInit(): void {
+    console.log('ContactCardComponent inicializado, cargando contacto...');
     this.state$ = this.store.state$;
+    console.log('Suscripción al estado del contacto establecida');
     this.store.loadContacto();
+    console.log('loadContacto() llamado');
   }
 }

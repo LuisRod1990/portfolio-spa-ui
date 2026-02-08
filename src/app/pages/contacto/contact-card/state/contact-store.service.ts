@@ -41,7 +41,7 @@ export class ContactStoreService {
       },
       error: (err) => {
         console.error('Error al cargar contacto:', err);
-
+        console.log('Respuesta completa del error:', err);
         // Guardamos un mensaje claro en el estado
         this.stateSubject.next({
           loading: false,
@@ -57,6 +57,7 @@ export class ContactStoreService {
       const parsed = new Date(fecha);
       return isNaN(parsed.getTime()) ? null : parsed;
     } catch {
+      console.log('Fecha inválida:', fecha);
       return null;
     }
   }
