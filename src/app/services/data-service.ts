@@ -7,6 +7,7 @@ import { Skill } from '../models/skills';
 import { Aptitud } from '../models/aptitud';
 import { Experiencia } from '../models/experiencia-total';
 import { ExperienciaLaboral } from '../models/experiencia-laboral';
+import { Formacion } from '../models/formacion';
 
 @Injectable({
   providedIn: 'root'
@@ -61,10 +62,9 @@ export class DataService {
     return this.http.post<ExperienciaLaboral[]>(environment.dataApi, body);
   }
 
-  // Ejemplo si luego agregas formación:
-  // getFormacion(id: number): Observable<Formacion[]> {
-  //   const body = { sp: environment.endpoints.getFormacion, usuarioId: id };
-  //   console.log('POST getFormacion con body:', body);
-  //   return this.http.post<Formacion[]>(environment.dataApi, body);
-  // }
+   getFormacion(id: number): Observable<Formacion[]> {
+     const body = { sp: environment.endpoints.getFormacion, usuarioId: id };
+     console.log('POST getFormacion con body:', body);
+     return this.http.post<Formacion[]>(environment.dataApi, body);
+   }
 }

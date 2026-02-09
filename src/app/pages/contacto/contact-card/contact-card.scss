@@ -37,13 +37,13 @@
 }
 
 .foto-perfil {
-  position: absolute;   /* 👈 la sacamos del flujo */
-  top: 2.2rem;            /* 👈 separación desde arriba */
-  right: 3rem;          /* 👈 separación desde la derecha */
+  position: absolute;
+  top: 2.2rem;
+  right: 3rem;
   width: 70px;
   height: 70px;
-  object-fit: cover;    /* evita deformación */
-  border-radius: 50%;   /* siempre circular */
+  object-fit: cover;
+  border-radius: 50%;
 
   background: #e0e0e0;
   box-shadow: 6px 6px 12px #bebebe, -6px -6px 12px #ffffff;
@@ -131,6 +131,136 @@
   padding: 0.6rem;
   border-radius: 8px;
   box-shadow: inset 2px 2px 4px #bebebe, inset -2px -2px 4px #ffffff;
+}
+
+/* Formación Académica - Light */
+.formacion {
+  margin-top: 1.5rem;
+}
+
+.formacion h3 {
+  font-size: 0.6rem; /* reducido */
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.formacion-list {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+
+.formacion-item {
+  flex: 1; // número de filas
+  min-width: 0; // encoger si es
+  border-radius: 12px;
+  background: #e0e0e0;
+  box-shadow: 6px 6px 12px #bebebe, -6px -6px 12px #ffffff;
+  padding: 0.1rem;
+  font-size: 0.4rem;
+  line-height: 1;
+}
+
+.formacion-item mat-card-title {
+  font-size: 0.5rem; /* 👈 títulos mucho más pequeños */
+  font-weight: 500;
+  color: #222;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.formacion-item mat-card-subtitle {
+  font-size: 0.45rem;
+  color: #555;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.formacion-info {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.40rem;
+  color: #444;
+  margin-top: 0.2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.formacion-info mat-icon {
+  font-size: 10px;
+  color: #1976d2;
+}
+
+/* Formación Académica - Dark */
+.dark-theme {
+  .formacion h3 {
+    color: #f0f0f0;
+  }
+
+  .formacion-item {
+    background: #2b2b2b;
+    box-shadow: 6px 6px 12px #1a1a1a, -6px -6px 12px #3a3a3a;
+    color: #ddd;
+  }
+
+  .formacion-item mat-card-title {
+    color: #eee;
+  }
+
+  .formacion-item mat-card-subtitle {
+    color: #ccc;
+  }
+
+  .formacion-info {
+    color: #ccc;
+  }
+
+  .formacion-info mat-icon {
+    color: #90caf9;
+  }
+}
+
+/* Bloques de sección */
+.section-block {
+  margin-top: 1.5rem;
+  border-radius: 12px;
+  background: #e0e0e0;
+  box-shadow: -6px -6px 12px #bebebe, 6px 6px 12px #ffffff;
+  padding: 0.8rem;
+}
+
+/* Título dentro del bloque */
+.section-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+  color: #333;
+}
+
+/* Contenido dentro del bloque */
+.section-content {
+  display: flex;
+  flex-direction: row;
+
+  gap: 0.5rem;
+}
+
+/* Dark theme */
+.dark-theme {
+  .section-block {
+    background: #2b2b2b;
+    box-shadow: -6px -6px 12px #1a1a1a, 6px 6px 12px #3a3a3a;
+    color: #ddd;
+  }
+
+  .section-title {
+    color: #f0f0f0;
+  }
 }
 
 /* Responsivo */

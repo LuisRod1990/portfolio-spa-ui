@@ -8,12 +8,44 @@ export class ContactStoreService {
   private stateSubject = new BehaviorSubject<ContactState>({
     loading: false,
     error: null,
-    contacto: null
+    contacto: null,
+    formacion: []
+  });
+  state$ = this.stateSubject.asObservable();
+  constructor(private dataService: DataService) {}
+  loadFormacion(usuarioId: number): void {
+  console.log('Iniciando carga de formación...');
+
+  // Actualiza estado a "loading"
+  this.stateSubject.next({
+    ...this.stateSubject.value,
+    loading: true,
+    error: null
   });
 
-  state$ = this.stateSubject.asObservable();
+  this.dataService.getFormacion(usuarioId).subscribe({
+    next: (formacion) => {
+      console.log('Formación recibida:', formacion);
 
-  constructor(private dataService: DataService) {}
+      this.stateSubject.next({
+        ...this.stateSubject.value,
+        loading: false,
+        error: null,
+        formacion: formacion ?? []
+      });
+    },
+    error: (err) => {
+      console.error('Error al cargar formación:', err);
+
+      this.stateSubject.next({
+        ...this.stateSubject.value,
+        loading: false,
+        error: 'Error al cargar formación. Revisa la API o parámetros.',
+        formacion: []
+      });
+    }
+  });
+}
 
   loadContacto(): void {
     console.log('Iniciando carga de contacto...');
@@ -46,7 +78,8 @@ export class ContactStoreService {
           this.stateSubject.next({
             loading: false,
             error: 'No se encontró contacto en la respuesta de la API',
-            contacto: null
+            contacto: null,
+            formacion: [] // Aseguramos que formacion también se resetea en caso de error
           });
           return;
         }
@@ -63,7 +96,8 @@ export class ContactStoreService {
         this.stateSubject.next({
           loading: false,
           error: null,
-          contacto: contactoNormalizado
+          contacto: contactoNormalizado,
+          formacion: this.stateSubject.value.formacion // Mantenemos la formación cargada previamente
         });
       },
       error: (err) => {
@@ -74,6 +108,7 @@ export class ContactStoreService {
           loading: false,
           error: 'Error al cargar contacto. Revisa la API o parámetros.',
           contacto: null
+          , formacion: this.stateSubject.value.formacion // Mantenemos la formación cargada previamente
         });
       }
     });
