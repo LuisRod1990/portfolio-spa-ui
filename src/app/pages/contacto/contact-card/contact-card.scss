@@ -9,7 +9,7 @@
   box-shadow: 9px 9px 16px #bebebe, -9px -9px 16px #ffffff;
   transition: transform 0.3s ease-in-out;
   box-sizing: border-box;
-  font-size: 0.8rem; /* 👈 base más pequeña */
+  font-size: 0.8rem; /* base más pequeña */
 }
 
 .contacto-card:hover {
@@ -19,7 +19,7 @@
 /* Header */
 .card-header {
   display: flex;
-  flex-direction: column; /* fila superior y luego contactos */
+  flex-direction: column;
   gap: 0.75rem;
   padding: 1rem;
   border-radius: 12px;
@@ -32,15 +32,15 @@
 .header-top {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* 👈 nombre/título izquierda, foto derecha */
+  justify-content: space-between; /* nombre/título izquierda, foto derecha */
   gap: 1rem;
 }
 
 .foto-perfil {
   width: 70px;
   height: 70px;
-  object-fit: cover; /* 👈 evita deformación */
-  border-radius: 50%; /* 👈 siempre circular */
+  object-fit: cover; /* evita deformación */
+  border-radius: 50%; /* siempre circular */
   background: #e0e0e0;
   box-shadow: 6px 6px 12px #bebebe, -6px -6px 12px #ffffff;
   padding: 4px;
@@ -52,7 +52,7 @@
 }
 
 .nombre {
-  font-size: 0.95rem; /* 👈 compacto */
+  font-size: 0.95rem;
   font-weight: 600;
   color: #333;
 }
@@ -68,7 +68,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   gap: 0.75rem;
-  font-size: 0.75rem; /* 👈 más pequeño */
+  font-size: 0.75rem; /* más pequeño */
 }
 
 .info-item-no-background {
@@ -87,16 +87,17 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin: 0.75rem 0;
-  font-size: 0.7rem; /* 👈 aún más pequeño */
+  margin: 0.5rem 0;
+  font-size: 0.65rem; /* 👈 más pequeño */
   color: #444;
+  justify-content: flex-start; /* 👈 alineados a la izquierda */
 }
 
 .info-line span {
   background: #e0e0e0;
-  padding: 3px 6px;
+  padding: 2px 5px; /* 👈 menos padding */
   border-radius: 6px;
-  box-shadow: 4px 4px 8px #bebebe, -4px -4px 8px #ffffff;
+  box-shadow: 3px 3px 6px #bebebe, -3px -3px 6px #ffffff;
 }
 
 /* Info items con neumorfismo */
@@ -104,11 +105,11 @@
   display: flex;
   align-items: center;
   gap: 4px;
-  font-size: 0.7rem; /* 👈 reducido */
+  font-size: 0.65rem; /* 👈 reducido */
   color: #444;
   background: #e0e0e0;
-  padding: 0.5rem;
-  border-radius: 10px;
+  padding: 0.4rem;
+  border-radius: 8px;
   box-shadow: inset 2px 2px 4px #bebebe, inset -2px -2px 4px #ffffff;
 }
 
@@ -123,15 +124,15 @@
   line-height: 1.3;
   color: #444;
   background: #e0e0e0;
-  padding: 0.75rem;
-  border-radius: 10px;
+  padding: 0.6rem;
+  border-radius: 8px;
   box-shadow: inset 2px 2px 4px #bebebe, inset -2px -2px 4px #ffffff;
 }
 
 /* Responsivo */
 @media (max-width: 768px) {
   .header-top {
-    flex-direction: column-reverse; /* 👈 foto abajo, nombre arriba en móvil */
+    flex-direction: column-reverse; /* foto abajo, nombre arriba en móvil */
     align-items: center;
     text-align: center;
   }
@@ -142,8 +143,8 @@
   }
 
   .info-line {
-    justify-content: center;
-    font-size: 0.65rem;
+    justify-content: flex-start; /* 👈 sigue alineado a la izquierda */
+    font-size: 0.6rem;
   }
 
   .resumen p {
