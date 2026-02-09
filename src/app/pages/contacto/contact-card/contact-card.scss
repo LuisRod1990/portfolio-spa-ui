@@ -37,13 +37,17 @@
 }
 
 .foto-perfil {
+  position: absolute;   /* 👈 la sacamos del flujo */
+  top: 2.2rem;            /* 👈 separación desde arriba */
+  right: 3rem;          /* 👈 separación desde la derecha */
   width: 70px;
   height: 70px;
-  object-fit: cover; /* evita deformación */
-  border-radius: 50%; /* siempre circular */
+  object-fit: cover;    /* evita deformación */
+  border-radius: 50%;   /* siempre circular */
+
   background: #e0e0e0;
   box-shadow: 6px 6px 12px #bebebe, -6px -6px 12px #ffffff;
-  padding: 4px;
+  padding: 1rem;
 }
 
 .card-header-info {
