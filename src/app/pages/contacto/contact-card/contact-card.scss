@@ -72,7 +72,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   gap: 0.75rem;
-  font-size: 0.75rem; /* más pequeño */
+  font-size: 0.55rem; /* más pequeño */
 }
 
 .info-item-no-background {
@@ -133,9 +133,18 @@
   box-shadow: inset 2px 2px 4px #bebebe, inset -2px -2px 4px #ffffff;
 }
 
+/* Contenedor de dos columnas */
+.dual-section {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
 /* Formación Académica - Light */
 .formacion {
   margin-top: 1.5rem;
+
 }
 
 .formacion h3 {
@@ -147,23 +156,25 @@
 
 .formacion-list {
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
   gap: 0.5rem;
 }
 
 .formacion-item {
-  flex: 1; // número de filas
-  min-width: 0; // encoger si es
+  flex: 1 1 100%;   /* 👈 flex-grow, flex-shrink y flex-basis */
+  min-width: 0;     /* permite que se encoja dentro del contenedor */
   border-radius: 12px;
   background: #e0e0e0;
   box-shadow: 6px 6px 12px #bebebe, -6px -6px 12px #ffffff;
-  padding: 0.1rem;
-  font-size: 0.4rem;
-  line-height: 1;
+  padding: 0.4rem;
+  font-size: 0.6rem; /* 👈 letra pequeña pero legible */
+  line-height: 1.2;
+  box-sizing: border-box; /* 👈 asegura que padding se incluya en el cálculo */
+  overflow: hidden;       /* 👈 evita que se desborde el contenido */
 }
 
 .formacion-item mat-card-title {
-  font-size: 0.5rem; /* 👈 títulos mucho más pequeños */
+  font-size: 0.45rem; /* 👈 títulos mucho más pequeños */
   font-weight: 500;
   color: #222;
   white-space: nowrap;
@@ -172,7 +183,7 @@
 }
 
 .formacion-item mat-card-subtitle {
-  font-size: 0.45rem;
+  font-size: 0.35rem;
   color: #555;
   white-space: nowrap;
   overflow: hidden;
@@ -183,7 +194,7 @@
   display: flex;
   align-items: center;
   gap: 4px;
-  font-size: 0.40rem;
+  font-size: 0.25rem;
   color: #444;
   margin-top: 0.2rem;
   white-space: nowrap;
@@ -226,12 +237,15 @@
 }
 
 /* Bloques de sección */
+/* Cada bloque ocupa el mismo espacio */
 .section-block {
-  margin-top: 1.5rem;
+  flex: 1 1 0; /* flex-grow, flex-shrink, flex-basis */
   border-radius: 12px;
   background: #e0e0e0;
   box-shadow: -6px -6px 12px #bebebe, 6px 6px 12px #ffffff;
   padding: 0.8rem;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Título dentro del bloque */
@@ -284,4 +298,9 @@
   .resumen p {
     font-size: 0.7rem;
   }
+
+  .dual-section {
+    flex-direction: column;
+  }
+
 }

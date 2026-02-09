@@ -11,7 +11,7 @@
       <mat-card-header class="card-header">
         <div class="header-left">
           <!--<img [src]="photoUrl" alt="{{ photoName }}" class="foto-perfil" />-->
-          <img mat-card-image src="https://larj-portfolio-images-public.s3.us-east-2.amazonaws.com/FOTO_CV.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAYCQIF3N724KVFXGI%2F20260209%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Date=20260209T171014Z&X-Amz-Expires=300&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEMn%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMiJHMEUCIQD70ZyVPwFmRm848fMCl33tcwAj2BuPf3fXrU1IBBigcQIgbWHgsSq1FWGGBeiIgYixYl%2FwEgxx%2FppJ3xFOL4BxNzMq4wIIkv%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgw1NTUxNDE2ODQwOTUiDIWnCRDxNDwmZ8EFZyq3AkTVj02rUO9Z6rILDIa%2FVcMIQ18QVcOV9PIO07pLD197LOAx6x7yG7oevlTu85v54FkpnKqBv5u2Z7qoc7K69MGH5TGzuT6e9dIZeB%2FSSIUmBCw41k8snpiYz46o%2BGxBgtq3t0GCFKLQdRUiOTzdWBAU1HIEUgy8ODh1llpIyLwePLTiexTUsfw8ddXDw2FFpP8IgbcGCxFIrjBJHdBEk2ZfTr9XwY6CRI8A97rF3GfxdbtzniN%2FHpaKmG3rqVI%2FFi%2BUet3saHZXx8F8zPrg4nLsLc3sKZma0x7XzV9zlHWytLMThjNBpi7CXd9owGwGN%2B3Pxh9nXUu8rycrtBKYWbZ9PColYcWKOcqfGKFXdy3X18cpBzUKMWMv%2FIttt3%2BO%2FzM1UIAd5t38XeNZujP4IlcuGQHTLBBFMM6PqMwGOq0CkQCQ3uyo1ugCVbNKh1mXuN7PF7frL0Q8DPIYUvHFFXL%2Ftov%2FmGQwqAwiwkkTv1t57PmZELQOi1lTJgn2KdY5BtueQtErvJaaE%2FcYfVwr4IxtMngiC6r5HSnGaKMvtGGGEskzpkgEkayVhVDIZ5mIDdnOJ0ft7gacwUSaVj7aHxr6KCyM4jkQhnJK%2BHp0ncbAIvaGQdDlJGmFPiHjNpKT74NUPB3eoGItClJcGg4bKtVO9vCA8NsHR7iNADVk3ZT193KQn0HUKp3ymWoBRjvk23PXm2%2FTOPsxs7KFvJu7sCC7mzZagvWYwQ6EU0Ho6FIF%2BDt2BWh32Zt1uGiPpSAgHoGwox3IHTAPCt5JAe8kqI%2BjZlKPRnxrcidqdsuJvW6ExuRMp23fdzQuq9JnSg%3D%3D&X-Amz-Signature=1f7c1f72460046f5937a1625c271114ecf0197903a31c14b7738387254777681&X-Amz-SignedHeaders=host&response-content-disposition=inline" alt="{{ photoName }}" width="70" height="70" class="foto-perfil" />
+          <img mat-card-image src="https://larj-portfolio-images-public.s3.us-east-2.amazonaws.com/FOTO_CV.png" alt="{{ photoName }}" width="70" height="70" class="foto-perfil" />
           <div class="card-header-info">
             <mat-card-subtitle class="nombre">
               {{ state.contacto.nombre }} {{ state.contacto.apellidos }}
@@ -39,56 +39,61 @@
       </mat-card-header>
 
       <mat-card-content class="card-content">
-        <section class="info-grid">
-          <div class="info-line">
-            <div class="info-item">
-              <mat-icon>calendar_today</mat-icon>
-              <span>Fecha de nacimiento: {{ state.contacto.fechanacimiento | date:'longDate' }}</span>
+        <div class="dual-section">
+          <!-- Columna izquierda: Formación Académica -->
+          <section class="section-block formacion">
+            <h3 class="section-title">Formación Académica</h3>
+            <div class="section-content formacion-list">
+              <mat-card class="formacion-item" *ngFor="let f of state.formacion">
+                <mat-card-header>
+                  <mat-card-title>{{ f.nivel }} - {{ f.titulo }}</mat-card-title>
+                  <mat-card-subtitle>{{ f.institucion }}</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                  <div class="formacion-info">
+                    <mat-icon>location_on</mat-icon>
+                    <span>{{ f.ubicacion }}</span>
+                  </div>
+                  <div class="formacion-info">
+                    <mat-icon>calendar_today</mat-icon>
+                    <span>{{ f.fechainicio | date:'MMM yyyy' }} - {{ f.fechafin | date:'MMM yyyy' }}</span>
+                  </div>
+                </mat-card-content>
+              </mat-card>
             </div>
-            <div class="info-item">
-              <mat-icon>badge</mat-icon>
-              <span>RFC: {{ state.contacto.rfc }}</span>
-            </div>
-            <div class="info-item">
-              <mat-icon>fingerprint</mat-icon>
-              <span>CURP: {{ state.contacto.curp }}</span>
-            </div>
-            <div class="info-item">
-              <mat-icon>verified</mat-icon>
-              <span>Cédula Profesional: {{ state.contacto.cedula }}</span>
-            </div>
-          </div>
-        </section>
+          </section>
 
-        <!-- Formación Académica -->
-        
-          <h3 class="section-title">Formación Académica</h3>
-          <div class="section-content formacion-list">
-            <mat-card class="formacion-item" *ngFor="let f of state.formacion">
-              <mat-card-header>
-                <mat-card-title>{{ f.nivel }} - {{ f.titulo }}</mat-card-title>
-                <mat-card-subtitle>{{ f.institucion }}</mat-card-subtitle>
-              </mat-card-header>
-              <mat-card-content>
-                <div class="formacion-info">
-                  <mat-icon>location_on</mat-icon>
-                  <span>{{ f.ubicacion }}</span>
-                </div>
-                <div class="formacion-info">
-                  <mat-icon>calendar_today</mat-icon>
-                  <span>{{ f.fechainicio | date:'MMM yyyy' }} - {{ f.fechafin | date:'MMM yyyy' }}</span>
-                </div>
-              </mat-card-content>
-            </mat-card>
-          </div>
-        
-        <!-- Resumen de Perfil -->
+          <!-- Columna derecha: Datos personales -->
+          <section class="section-block datos">
+            <h3 class="section-title">Datos Personales</h3>
+            <div class="section-content datos-list">
+              <div class="info-item">
+                <mat-icon>calendar_today</mat-icon>
+                <span>Fecha de nacimiento: {{ state.contacto.fechanacimiento | date:'longDate' }}</span>
+              </div>
+              <div class="info-item">
+                <mat-icon>badge</mat-icon>
+                <span>RFC: {{ state.contacto.rfc }}</span>
+              </div>
+              <div class="info-item">
+                <mat-icon>fingerprint</mat-icon>
+                <span>CURP: {{ state.contacto.curp }}</span>
+              </div>
+              <div class="info-item">
+                <mat-icon>verified</mat-icon>
+                <span>Cédula Profesional: {{ state.contacto.cedula }}</span>
+              </div>
+            </div>
+          </section>
+        </div>
+<br>
+        <!-- Resumen de Perfil debajo -->
         <section class="section-block resumen">
           <h3 class="section-title">Resumen de Perfil</h3>
           <div class="section-content">
             <p>{{ state.contacto.resumenperfil }}</p>
           </div>
-        </section>      
+        </section>
       </mat-card-content>
     </mat-card>
   }
