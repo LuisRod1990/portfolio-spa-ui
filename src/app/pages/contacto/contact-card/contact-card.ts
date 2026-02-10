@@ -7,6 +7,7 @@ import { MatCardImage, MatCardContent, MatCardModule, MatCardSubtitle, MatCardHe
 import { ContactStoreService } from '../../contacto/contact-card/state/contact-store.service';
 import { Observable } from 'rxjs';
 import { ContactState } from '../../../models/contact-state';
+import { LogService } from '../../../services/log';
 
 @Component({
   selector: 'app-contact-card',
@@ -29,15 +30,20 @@ export class ContactCardComponent implements OnInit {
   state$!: Observable<ContactState>;
   photoUrl: string = 'assets/images/FOTO_CV.png';
   photoName: string = 'Luis Rodríguez';
-  constructor(private store: ContactStoreService) {}
+  constructor(private store: ContactStoreService, private logService: LogService) {}
 
   ngOnInit(): void {
-    console.log('ContactCardComponent inicializado, cargando contacto...');
-    this.state$ = this.store.state$;
-    console.log('Suscripción al estado del contacto establecida');
-    this.store.loadContacto();
-    console.log('loadContacto() llamado');
-    this.store.loadFormacion(1);
-    console.log('loadFormacion() llamado');
+    try {
+      console.log('ContactCardComponent inicializado, cargando contacto...');
+      this.state$ = this.store.state$;
+
+      this.store.loadContacto();
+      console.log('loadContacto() llamado');
+
+      this.store.loadFormacion(1);
+      console.log('loadFormacion() llamado');
+    } catch (error: any) {
+      this.logService.logError('Error en ContactCardComponent', error.stack);
+    }
   }
 }

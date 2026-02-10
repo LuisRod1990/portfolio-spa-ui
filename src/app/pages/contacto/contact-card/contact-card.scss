@@ -1,3 +1,70 @@
+/////////////////////// ALERTA DE ERROR - PARA PRUEBAS /////////////////////////
+.error-snackbar {
+  background-color: #d32f2f; // rojo
+  color: #fff;
+}
+
+.info-snackbar {
+  background-color: #1976d2; // azul
+  color: #fff;
+}
+
+//////////////////////////////////////////// LETRAS - ÍCONOS //////////////////////////////////
+.nombre {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #333;
+  text-shadow: -1px -1px 2px #fff, 1px 1px 2px #aaa;
+  
+}
+.titulo {
+  font-size: 0.7rem;
+  color: #555;
+  text-shadow: -1px -1px 2px #fff, 1px 1px 2px #aaa;
+}
+h2 {
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+  color: #555;
+  text-shadow: -1px -1px 2px #fff, 1px 1px 2px #aaa;
+}
+.formacion-item mat-card-title {
+  font-size: 0.55rem;
+  font-weight: 500;
+  color: #222;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-shadow: -1px -1px 2px #fff, 1px 1px 2px #aaa;
+}
+.formacion-item mat-card-subtitle {
+  font-size: 0.45rem;
+  color: #555;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-shadow: -1px -1px 2px #fff, 1px 1px 2px #aaa;
+}
+// Info items sin fondo
+.formacion-info {
+  font-size: 0.45rem;
+  color: #444;
+  text-overflow: ellipsis;
+}
+// Íconos pequeños para info items
+.formacion-info mat-icon {
+  font-size: 10px;
+  color: #1976d2;
+  align-content: end;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+
+
+
+////////////////////////// INICIO HEADER //////////////////////////
 /* Contacto con diseño light neumórfico */
 .contacto-card {
   width: 100vw;
@@ -40,13 +107,15 @@
   position: absolute;
   top: 2.2rem;
   right: 3rem;
-  width: 70px;
-  height: 70px;
+  
+  width: 100px;
+  height: 100px;
+  
   object-fit: cover;
+  
   border-radius: 50%;
-
   background: #e0e0e0;
-  box-shadow: 6px 6px 12px #bebebe, -6px -6px 12px #ffffff;
+  box-shadow: 8px 8px 16px #bebebe, -8px -8px 16px #ffffff;
   padding: 1rem;
 }
 
@@ -55,36 +124,46 @@
   flex-direction: column;
 }
 
-.nombre {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: #333;
-}
 
-.titulo {
-  font-size: 0.8rem;
-  color: #555;
-}
 
-/* Bloque de contacto debajo */
+
+
+
+/* Bloque encabezado - Datos personales */
 .header-right {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   gap: 0.75rem;
-  font-size: 0.55rem; /* más pequeño */
+  font-size: 0.55rem;
+  align-content: center;
+  text-shadow: .5px .5px 1px #fff, -.5px -.5px 1px #aaa;
 }
+
+
 
 .info-item-no-background {
   display: flex;
-  align-items: center; /* ícono y texto alineados */
+  align-items: center;
   gap: 4px;
 }
-
 .info-item-no-background mat-icon {
   font-size: 14px;
+  align-content: center;
   color: #1976d2;
+  text-shadow: 1.5px 1.5px 3px #bebebe, -1.5px -1.5px 3px #ffffff;
 }
+
+////////////////////////// FIN HEADER //////////////////////////
+
+
+
+
+
+
+
+
+
 
 /* Resumen */
 .resumen p {
@@ -95,7 +174,6 @@
   padding: 0.6rem;
   border-radius: 8px;
   box-shadow: inset 2px 2px 4px #bebebe, inset -2px -2px 4px #ffffff;
-  
 }
 
 /* Contenedor de dos columnas */
@@ -110,57 +188,14 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  background-color: blue;
 }
 
+// Items de formación académica con neumorfismo
 .formacion-item {
-  flex: 1 1 100%;   /* 👈 flex-grow, flex-shrink y flex-basis */
-  min-width: 0;     /* permite que se encoja dentro del contenedor */
   border-radius: 12px;
-  //background: #e0e0e0;
-  background: yellow;
-  box-shadow: 6px 6px 12px #bebebe, -6px -6px 12px #ffffff;
-  padding: 0.4rem;
-  font-size: 0.6rem; /* 👈 letra pequeña pero legible */
+  background: #e0e0e0;
+  box-shadow: -6px -6px 12px #bebebe, 6px 6px 12px #ffffff;
   line-height: 1.2;
-  box-sizing: border-box; /* 👈 asegura que padding se incluya en el cálculo */
-  overflow: hidden;       /* 👈 evita que se desborde el contenido */
-}
-
-.formacion-item mat-card-title {
-  font-size: 0.45rem; /* 👈 títulos mucho más pequeños */
-  font-weight: 500;
-  color: #222;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.formacion-item mat-card-subtitle {
-  font-size: 0.45rem;
-  color: #555;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.formacion-info {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 0.45rem;
-  //color: #444;
-  color: green;
-  margin-top: 0.2rem;
-  //white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  background-color: orange;
-}
-
-.formacion-info mat-icon {
-  font-size: 10px;
-  color: #1976d2;
 }
 
 /* Formación Académica - Dark */
@@ -197,7 +232,6 @@
 .section-block {
   flex: 1 1 0; /* flex-grow, flex-shrink, flex-basis */
   border-radius: 12px;
-  background: red;
   box-shadow: -6px -6px 12px #bebebe, 6px 6px 12px #ffffff;
   padding: 0.8rem;
   display: flex;
@@ -223,14 +257,6 @@
   color: #000;
 }
 
-/* Título dentro del bloque */
-.section-title {
-  font-size: 0.8rem;
-  font-weight: 700;
-  margin-bottom: 0.6rem;
-  //color: #333;
-  color: pink;
-}
 
 /* Contenido dentro del bloque */
 .section-content {
@@ -267,7 +293,7 @@
   }
 
   .info-line {
-    justify-content: flex-start; /* 👈 sigue alineado a la izquierda */
+    justify-content: flex-start;
     font-size: 0.6rem;
   }
 

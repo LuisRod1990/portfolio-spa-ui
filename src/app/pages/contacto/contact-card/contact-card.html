@@ -14,26 +14,29 @@
           <img mat-card-image src="https://larj-portfolio-images-public.s3.us-east-2.amazonaws.com/FOTO_CV.png" alt="{{ photoName }}" width="70" height="70" class="foto-perfil" />
           <div class="card-header-info">
             <mat-card-subtitle class="nombre">
-              {{ state.contacto.nombre }} {{ state.contacto.apellidos }}
+                {{ state.contacto.nombre }} {{ state.contacto.apellidos }}    
             </mat-card-subtitle>
             <mat-card-subtitle class="titulo">
               {{ state.contacto.titulo ?? 'Sin título' }}
-            </mat-card-subtitle>
+            </mat-card-subtitle>            
           </div>
         </div>
 
         <div class="header-right">
           <div class="info-item-no-background" matTooltip="Correo Electrónico">
+            
             <span>{{ state.contacto.usuario }}</span>
             <mat-icon>email</mat-icon>
           </div>
           <div class="info-item-no-background">
-            <span>{{ state.contacto.celular ?? 'Sin teléfono' }}</span>
-            <mat-icon>phone</mat-icon>
+            
+            <span>{{ state.contacto.celular ?? 'Sin teléfono' }}
+
+            </span><mat-icon>phone</mat-icon>
           </div>
           <div class="info-item-no-background">
-            <span>{{ state.contacto.direccion ?? 'Sin dirección' }}</span>
-            <mat-icon>location_on</mat-icon>
+            <span>{{ state.contacto.direccion ?? 'Sin dirección' }}
+            </span><mat-icon>location_on</mat-icon>
           </div>
         </div>
       </mat-card-header>
@@ -42,11 +45,11 @@
         <div class="dual-section">
           <!-- Columna izquierda: Formación Académica -->
           <section class="section-block formacion">
-            <h3 class="section-title">Formación Académica</h3>
+            <h2 class="section-title">Formación Académica</h2>
             <div class="section-content formacion-list">
               <mat-card class="formacion-item" *ngFor="let f of state.formacion">
                 <mat-card-header>
-                  <mat-card-title>{{ f.nivel }} - {{ f.titulo }}</mat-card-title>
+                  <mat-card-title> {{ f.nivel }} - {{ f.titulo }}</mat-card-title>
                   <mat-card-subtitle>{{ f.institucion }}</mat-card-subtitle>
                 </mat-card-header>
                 <mat-card-content>
