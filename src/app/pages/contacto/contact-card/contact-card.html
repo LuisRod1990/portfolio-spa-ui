@@ -31,38 +31,42 @@
           
       </div>
       <div class="header-right">
-        <div class="info-item-no-background">
+          <div class="info-item-no-background" matTooltip="RFC">
+            <span><strong> RFC: </strong> {{ state.contacto.rfc  ?? 'Sin RFC' }} </span
+            ><mat-icon>badge</mat-icon>
+          </div>          
+          <div class="info-item-no-background" matTooltip="CURP">
+            <span><strong>Curp: </strong>{{ state.contacto.curp  ?? 'Sin CURP' }} </span
+            ><mat-icon>fingerprint</mat-icon>
+          </div>
+          <div class="info-item-no-background" matTooltip="Cédula Profesional">
+            <span>
+              <strong> Cédula Profesional: </strong>
+              {{ state.contacto.cedula  ?? 'Sin Cédula' }} </span
+            ><mat-icon>verified</mat-icon>
+          </div>
+          <div class="info-item-no-background">
+            <strong> Fecha Nacimiento: </strong>
           <span>{{ state.contacto.fechanacimiento | date:'longDate' }}</span>
           <mat-icon>calendar_today</mat-icon>
           </div>
         <div class="info-item-no-background" matTooltip="Correo Electrónico">
+            <strong> Email: </strong>
             <span>{{ state.contacto.usuario }}</span>
             <mat-icon>email</mat-icon>
           </div>
           <div class="info-item-no-background" matTooltip="Número de Teléfono">
+            <strong> Número Celular: </strong>
             <span>{{ state.contacto.celular ?? 'Sin teléfono' }} </span
             ><mat-icon>phone</mat-icon>
           </div>
-          <div class="info-item-no-background" matTooltip="RFC">
-            <span>RFC: {{ state.contacto.rfc  ?? 'Sin RFC' }} </span
-            ><mat-icon>badge</mat-icon>
-          </div>          
-          <div class="info-item-no-background" matTooltip="CURP">
-            <span>Curp: {{ state.contacto.curp  ?? 'Sin CURP' }} </span
-            ><mat-icon>fingerprint</mat-icon>
-          </div>
-          <div class="info-item-no-background" matTooltip="Cédula Profesional">
-            <span
-              >Cédula Profesional:
-              {{ state.contacto.cedula  ?? 'Sin Cédula' }} </span
-            ><mat-icon>verified</mat-icon>
-          </div>
           <div class="info-item-no-background" matTooltip="Dirección">
+            <strong> Dirección: </strong>
             <span>{{ state.contacto.direccion ?? 'Sin dirección' }} </span>
             <mat-icon>location_on</mat-icon>
           </div>
-          </div>
-
+        </div>
+        
           <div class="header-right">
           
           
