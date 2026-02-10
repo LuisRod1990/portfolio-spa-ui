@@ -46,32 +46,6 @@
 
     <mat-card-content class="card-content">
       <div class="dual-section">
-        <!-- Columna izquierda: Formación Académica -->
-        <section class="section-block formacion">
-          <h2 class="section-title">Formación Académica</h2>
-          <div class="section-content formacion-list">
-            <mat-card class="formacion-item" *ngFor="let f of state.formacion">
-              <mat-card-header>
-                <mat-card-title> {{ f.nivel }} - {{ f.titulo }}</mat-card-title>
-                <mat-card-subtitle>{{ f.institucion }}</mat-card-subtitle>
-              </mat-card-header>
-              <mat-card-content>
-                <div class="formacion-info">
-                  <mat-icon>location_on</mat-icon>
-                  <span>{{ f.ubicacion }}</span>
-                </div>
-                <div class="formacion-info">
-                  <mat-icon>calendar_today</mat-icon>
-                  <span
-                    >{{ f.fechainicio | date:'MMM yyyy' }} -
-                    {{ f.fechafin | date:'MMM yyyy' }}</span
-                  >
-                </div>
-              </mat-card-content>
-            </mat-card>
-          </div>
-        </section>
-
         <!-- Resumen de Perfil debajo -->
          <section class="section-block resumen">
           <h2 class="section-title">Información de Contacto</h2>
@@ -131,6 +105,32 @@
           </div>
         </div>
         </section>
+        <!-- Columna izquierda: Formación Académica -->
+        <section class="section-block formacion">
+          <h2 class="section-title">Formación Académica</h2>
+          <div class="section-content formacion-list">
+            <mat-card class="formacion-item" *ngFor="let f of state.formacion">
+              <mat-card-header>
+                <mat-card-title> {{ f.nivel }} - {{ f.titulo }}</mat-card-title>
+                <mat-card-subtitle>{{ f.institucion }}</mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>
+                <div class="formacion-info">
+                  <mat-icon>location_on</mat-icon>
+                  <span>{{ f.ubicacion }}</span>
+                </div>
+                <div class="formacion-info">
+                  <mat-icon>calendar_today</mat-icon>
+                  <span
+                    >{{ f.fechainicio | date:'MMM yyyy' }} -
+                    {{ f.fechafin | date:'MMM yyyy' }}</span
+                  >
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </section>
+
       </div>
     </mat-card-content>
   </mat-card>
