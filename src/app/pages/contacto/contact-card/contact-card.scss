@@ -9,6 +9,10 @@
   color: #fff;
 }
 
+p {
+  text-indent: 6px;
+}
+
 //////////////////////////////////////////// LETRAS - ÍCONOS //////////////////////////////////
 .nombre {
   font-size: 0.95rem;
@@ -86,7 +90,7 @@ h2 {
 /* Header */
 .card-header {
   display: flex;
-  flex-direction: column;
+  flex-direction:row;
   gap: 0.75rem;
   padding: 1rem;
   border-radius: 12px;
@@ -104,9 +108,9 @@ h2 {
 }
 
 .foto-perfil {
-  position: absolute;
-  top: 2.7rem;
-  right: 3rem;
+  //position: absolute;
+  //top: 2.7rem;
+  //right: 3rem;
   
   width: 80px;
   height: 80px;
@@ -121,7 +125,7 @@ h2 {
 
 .card-header-info {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 
