@@ -8,6 +8,7 @@ import { ContactStoreService } from '../../contacto/contact-card/state/contact-s
 import { Observable } from 'rxjs';
 import { ContactState } from '../../../models/contact-state';
 import { LogService } from '../../../services/log';
+import { MatFormFieldModule } from "@angular/material/form-field";
 
 @Component({
   selector: 'app-contact-card',
@@ -22,6 +23,7 @@ import { LogService } from '../../../services/log';
     MatCardContent,
     MatCardModule,
     CommonModule,
+    MatFormFieldModule
 ],
   templateUrl: './contact-card.html',
   styleUrls: ['./contact-card.scss'],

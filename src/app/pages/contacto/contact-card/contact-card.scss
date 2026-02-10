@@ -105,11 +105,11 @@ h2 {
 
 .foto-perfil {
   position: absolute;
-  top: 2.2rem;
+  top: 2.7rem;
   right: 3rem;
   
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   
   object-fit: cover;
   
@@ -146,6 +146,8 @@ h2 {
   display: flex;
   align-items: center;
   gap: 4px;
+  text-shadow: 1.5px 1.5px 3px #bebebe, -1.5px -1.5px 3px #ffffff;
+  font-size: 10px;  
 }
 .info-item-no-background mat-icon {
   font-size: 14px;
