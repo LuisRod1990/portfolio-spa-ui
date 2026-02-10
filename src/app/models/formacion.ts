@@ -5,6 +5,10 @@ export interface Formacion {
   institucion: string;
   titulo: string;
   ubicacion: string;
-  fechainicio: string; // o Date si prefieres
-  fechafin: string;    // o Date si prefieres
+  fechainicio: string;
+  fechafin: string;
+  urlfoto1?: string;
+  urlfoto2?: string;
+  urlsitio1?: string;
+  urlsitio2?: string;
 }

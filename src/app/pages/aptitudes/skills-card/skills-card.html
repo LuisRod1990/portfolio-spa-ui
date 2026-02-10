@@ -3,7 +3,7 @@
   <nav cdkDrag class="floating-navbar" [class.collapsed]="!state.menuOpen">
     <!-- Botón hamburguesa -->
     <button mat-icon-button (click)="toggleMenu()" class="menu-btn">
-      <mat-icon>{{ state.menuOpen ? 'close' : 'menu' }}</mat-icon>
+      <mat-icon>{{ state.menuOpen ? 'close' : 'settings' }}</mat-icon>
     </button>
 
     <div class="nav-buttons" [class.open]="state.menuOpen">
@@ -11,10 +11,10 @@
       <button (click)="changeLayout('two-top-one-bottom')" matTooltip="Layout 1">
         <mat-icon>view_quilt</mat-icon>
       </button>
-      <!-- Botón Layout 2 -->
+      <!-- Botón Layout 2 
       <button (click)="changeLayout('two-columns')" matTooltip="Layout 2">
         <mat-icon>view_column</mat-icon>
-      </button>
+      </button>-->
       <!-- Botón Layout 3 -->
       <button (click)="changeLayout('two-right-one-left')" matTooltip="Layout 3">
         <mat-icon>auto_awesome_mosaic</mat-icon>

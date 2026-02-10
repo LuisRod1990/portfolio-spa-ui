@@ -36,34 +36,6 @@
          <section class="section-block resumen">
          <div class="header-right">
           <h2 class="section-title">Información de Contacto</h2>
-          <div class="info-item-no-background">
-            <mat-icon>badge</mat-icon>
-            <span>
-              <strong> RFC: </strong>
-               {{ state.contacto.rfc  ?? 'Sin RFC' }} 
-            </span>
-            
-          </div>          
-          <div class="info-item-no-background">
-            <mat-icon>fingerprint</mat-icon>
-            <span>
-              <strong>Curp: </strong>{{ state.contacto.curp  ?? 'Sin CURP' }} 
-            </span>
-          </div>
-          <div class="info-item-no-background">
-            <mat-icon>verified</mat-icon>
-            <span>
-              <strong> Cédula Profesional: </strong>
-              {{ state.contacto.cedula  ?? 'Sin Cédula' }} 
-            </span>
-          </div>
-          <div class="info-item-no-background">
-            <mat-icon>calendar_today</mat-icon>
-            <span>
-              <strong> Fecha Nacimiento: </strong>
-              {{ state.contacto.fechanacimiento | date:'longDate' }}
-            </span>
-          </div>
         <div class="info-item-no-background">
             <mat-icon>email</mat-icon>
             <span>
@@ -78,6 +50,34 @@
             {{ state.contacto.celular ?? 'Sin teléfono' }} </span>            
           </div>
           <div class="info-item-no-background">
+            <mat-icon>calendar_today</mat-icon>
+            <span>
+              <strong> Fecha Nacimiento: </strong>
+              {{ state.contacto.fechanacimiento | date:'longDate' }}
+            </span>
+          </div>
+          <div class="info-item-no-background">
+            <mat-icon>badge</mat-icon>
+            <span>
+              <strong> RFC: </strong>
+               {{ state.contacto.rfc  ?? 'Sin RFC' }} 
+            </span>  
+          </div>          
+          <div class="info-item-no-background">
+            <mat-icon>fingerprint</mat-icon>
+            <span>
+              <strong>Curp: </strong>{{ state.contacto.curp  ?? 'Sin CURP' }} 
+            </span>
+          </div>
+          <div class="info-item-no-background">
+            <mat-icon>verified</mat-icon>
+            <span>
+              <strong> Cédula Profesional: </strong>
+              {{ state.contacto.cedula  ?? 'Sin Cédula' }} 
+            </span>
+          </div>
+          
+          <div class="info-item-no-background">
             <mat-icon>location_on</mat-icon>
             <span>
             <strong> Dirección: </strong>
@@ -85,7 +85,7 @@
           </div>
           <br>
           <h2 class="section-title">Resumen de Perfil</h2>
-          <div class="section-content">
+          <div class="section-content" >
             <p>{{ state.contacto.resumenperfil }}</p>
           </div>
         </div>
