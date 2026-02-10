@@ -32,46 +32,51 @@
       </div>
       <div class="header-right">
           <div class="info-item-no-background" matTooltip="RFC">
-            <span><strong> RFC: </strong> {{ state.contacto.rfc  ?? 'Sin RFC' }} </span
-            ><mat-icon>badge</mat-icon>
+            <mat-icon>badge</mat-icon>
+            <span>
+              <strong> RFC: </strong>
+               {{ state.contacto.rfc  ?? 'Sin RFC' }} 
+            </span>
+            
           </div>          
           <div class="info-item-no-background" matTooltip="CURP">
-            <span><strong>Curp: </strong>{{ state.contacto.curp  ?? 'Sin CURP' }} </span
-            ><mat-icon>fingerprint</mat-icon>
+            <mat-icon>fingerprint</mat-icon>
+            <span>
+              <strong>Curp: </strong>{{ state.contacto.curp  ?? 'Sin CURP' }} 
+            </span>
           </div>
           <div class="info-item-no-background" matTooltip="Cédula Profesional">
+            <mat-icon>verified</mat-icon>
             <span>
               <strong> Cédula Profesional: </strong>
-              {{ state.contacto.cedula  ?? 'Sin Cédula' }} </span
-            ><mat-icon>verified</mat-icon>
+              {{ state.contacto.cedula  ?? 'Sin Cédula' }} 
+            </span>
           </div>
           <div class="info-item-no-background">
-            <p><strong> Fecha Nacimiento: </strong>
-          <span>{{ state.contacto.fechanacimiento | date:'longDate' }}</span>
-          <mat-icon>calendar_today</mat-icon>
-          </p>
+            <mat-icon>calendar_today</mat-icon>
+            <span>
+              <strong> Fecha Nacimiento: </strong>
+              {{ state.contacto.fechanacimiento | date:'longDate' }}
+            </span>
           </div>
         <div class="info-item-no-background" matTooltip="Correo Electrónico">
-            <p><strong> Email: </strong>
-            <span>{{ state.contacto.usuario }}</span>
-            </p>
             <mat-icon>email</mat-icon>
+            <span>
+              <strong> Email: </strong>
+              {{ state.contacto.usuario }}
+            </span>
           </div>
           <div class="info-item-no-background" matTooltip="Número de Teléfono">
-            <p>
             <mat-icon>phone</mat-icon>
+            <span>
             <strong> Número Celular: </strong>
-            <span>{{ state.contacto.celular ?? 'Sin teléfono' }} </span>
-            </p>
-            
+            {{ state.contacto.celular ?? 'Sin teléfono' }} </span>            
           </div>
           <div class="info-item-no-background" matTooltip="Dirección">
-            <p>
             <mat-icon>location_on</mat-icon>
+            <span>
             <strong> Dirección: </strong>
-            <span>{{ state.contacto.direccion ?? 'Sin dirección' }} </span>
-            </p>
-            
+            {{ state.contacto.direccion ?? 'Sin dirección' }} </span>
           </div>
         </div>
         
