@@ -23,24 +23,9 @@
           <mat-card-subtitle class="titulo">
             ({{ state.contacto.titulo ?? 'Sin título' }})
           </mat-card-subtitle>
-        </div>
-        <br>
-        
-          
+        </div>    
       </div>
-      
-          <div class="header-right">
-          
-          
-          
-
-          
-        
-        </div>
-      
-      
-      
-
+      <div class="header-right"></div>
     </mat-card-header>
     
 
@@ -48,8 +33,8 @@
       <div class="dual-section">
         <!-- Resumen de Perfil debajo -->
          <section class="section-block resumen">
-          <h2 class="section-title">Información de Contacto</h2>
          <div class="header-right">
+          <h2 class="section-title">Información de Contacto</h2>
           <div class="info-item-no-background" matTooltip="RFC">
             <mat-icon>badge</mat-icon>
             <span>
@@ -97,7 +82,6 @@
             <strong> Dirección: </strong>
             {{ state.contacto.direccion ?? 'Sin dirección' }} </span>
           </div>
-          <br>
           <br>
           <h2 class="section-title">Resumen de Perfil</h2>
           <div class="section-content">
