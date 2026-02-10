@@ -46,23 +46,29 @@
             ><mat-icon>verified</mat-icon>
           </div>
           <div class="info-item-no-background">
-            <strong> Fecha Nacimiento: </strong>
+            <p><strong> Fecha Nacimiento: </strong>
           <span>{{ state.contacto.fechanacimiento | date:'longDate' }}</span>
           <mat-icon>calendar_today</mat-icon>
+          </p>
           </div>
         <div class="info-item-no-background" matTooltip="Correo Electrónico">
-            <strong> Email: </strong>
+            <p><strong> Email: </strong>
             <span>{{ state.contacto.usuario }}</span>
+            </p>
             <mat-icon>email</mat-icon>
           </div>
           <div class="info-item-no-background" matTooltip="Número de Teléfono">
+            <p>
             <strong> Número Celular: </strong>
-            <span>{{ state.contacto.celular ?? 'Sin teléfono' }} </span
-            ><mat-icon>phone</mat-icon>
+            <span>{{ state.contacto.celular ?? 'Sin teléfono' }} </span>
+            </p>
+            <mat-icon>phone</mat-icon>
           </div>
           <div class="info-item-no-background" matTooltip="Dirección">
+            <p>
             <strong> Dirección: </strong>
             <span>{{ state.contacto.direccion ?? 'Sin dirección' }} </span>
+            </p>
             <mat-icon>location_on</mat-icon>
           </div>
         </div>

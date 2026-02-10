@@ -9,6 +9,11 @@
   color: #fff;
 }
 
+.info-item-no-background p {
+  padding: 0;
+  margin: 0;
+}
+
 //////////////////////////////////////////// LETRAS - ÍCONOS //////////////////////////////////
 .nombre {
   font-size: 0.95rem;
@@ -102,6 +107,7 @@ h2 {
   justify-content: space-between; /* nombre/título izquierda, foto derecha */
   gap: 1rem; 
 }
+
 
 .foto-perfil {
   //position: absolute;
