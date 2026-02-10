@@ -105,24 +105,21 @@ mat-icon {
   display: flex;
   align-items: center;
   justify-content: space-between; /* nombre/título izquierda, foto derecha */
-  gap: 1rem; 
+  //gap: 1rem; 
 }
 
 
 .foto-perfil {
-  //position: absolute;
-  //top: 3.7rem;
-  //right: 3rem;
-  
-  width: 90px;
-  height: 90px;
-  
-  object-fit: cover;
-  
-  border-radius: 50%;
+  position: absolute;
+  top: 2.5rem;
+  right: 3rem;
+  width: 70px;
+  height: 70px;
+  //object-fit: cover;
+  border-radius: 10%;
   background: #e0e0e0;
   box-shadow: 8px 8px 16px #bebebe, -8px -8px 16px #ffffff;
-  padding: 1rem;
+  padding: .2rem;
 }
 
 .card-header-info {
@@ -159,6 +156,7 @@ mat-icon {
   text-shadow: .5px .5px 1px #fff, -.5px -.5px 1px #aaa;
   padding-top: 2%;
   padding-left: 3%;
+  padding-right: 3%;
 }
 
 .info-item-no-background {

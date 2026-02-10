@@ -17,6 +17,7 @@
           class="foto-perfil"
         />
         <div class="card-header-info">
+          <br>
           <mat-card-subtitle class="nombre">
             {{ state.contacto.nombre }} {{ state.contacto.apellidos }}
           </mat-card-subtitle>
@@ -35,7 +36,7 @@
          <section class="section-block resumen">
          <div class="header-right">
           <h2 class="section-title">Información de Contacto</h2>
-          <div class="info-item-no-background" matTooltip="RFC">
+          <div class="info-item-no-background">
             <mat-icon>badge</mat-icon>
             <span>
               <strong> RFC: </strong>
@@ -43,13 +44,13 @@
             </span>
             
           </div>          
-          <div class="info-item-no-background" matTooltip="CURP">
+          <div class="info-item-no-background">
             <mat-icon>fingerprint</mat-icon>
             <span>
               <strong>Curp: </strong>{{ state.contacto.curp  ?? 'Sin CURP' }} 
             </span>
           </div>
-          <div class="info-item-no-background" matTooltip="Cédula Profesional">
+          <div class="info-item-no-background">
             <mat-icon>verified</mat-icon>
             <span>
               <strong> Cédula Profesional: </strong>
@@ -63,20 +64,20 @@
               {{ state.contacto.fechanacimiento | date:'longDate' }}
             </span>
           </div>
-        <div class="info-item-no-background" matTooltip="Correo Electrónico">
+        <div class="info-item-no-background">
             <mat-icon>email</mat-icon>
             <span>
               <strong> Email: </strong>
               {{ state.contacto.usuario }}
             </span>
           </div>
-          <div class="info-item-no-background" matTooltip="Número de Teléfono">
+          <div class="info-item-no-background">
             <mat-icon>phone</mat-icon>
             <span>
             <strong> Número Celular: </strong>
             {{ state.contacto.celular ?? 'Sin teléfono' }} </span>            
           </div>
-          <div class="info-item-no-background" matTooltip="Dirección">
+          <div class="info-item-no-background">
             <mat-icon>location_on</mat-icon>
             <span>
             <strong> Dirección: </strong>
@@ -90,7 +91,6 @@
         </div>
         </section>
         
-
         <!-- Columna izquierda: Formación Académica -->
         <!--
         <section class="section-block formacion">
