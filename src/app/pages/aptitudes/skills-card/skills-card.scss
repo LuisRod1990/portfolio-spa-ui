@@ -250,6 +250,54 @@ button {
 .dark-theme {
     background: #2b2b2b;
     color: #f0f0f0;
+    .floating-navbar {
+        background: #2a2a2a;
+        box-shadow: 1px 1px 2.5px #bebebe, -1px -1px 2.5px #4a4a4a;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+    .menu-btn {
+        background: transparent;
+        color: #f0f0f0;
+        box-shadow: 1px 1px 2.5px #bebebe, -1px -1px 2.5px #4a4a4a;
+    }
+    .nav-buttons {
+    button[mat-icon-button],
+    button {
+      background: #2a2a2a;
+      border-radius: 8px;
+      box-shadow: 1px 1px 2px #bebebe, -1px -1px 2px #4a4a4a;
+      color: #f0f0f0;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    
+    mat-icon {
+      color: #f0f0f0;
+    }
+  }
+
+  .toggle-switch {
+    .slider {
+      background: #2a2a2a;
+      box-shadow: 1px 1px 2.5px #555, -1px -1px 2.5px #4a4a4a;
+    }
+    .icon {
+      background: #2a2a2a;
+      color: #f0f0f0;
+      box-shadow: 1px 1px 2.5px #555, -1px -1px 2.5px #4a4a4a;
+    }
+  }
+
+  /* movimiento vertical */
+  input:checked + .slider .icon {
+    transform: translateY(22px); /* baja el ícono */
+    background: #2a2a2a;
+    color: #333;
+  }
+
+
+
     .neumorphic {
         background: #2b2b2b;
         box-shadow: 10px 10px 20px #1a1a1a, -10px -10px 20px #3c3c3c;
@@ -386,10 +434,8 @@ button {
     align-items: center;
     justify-content: flex-start; /* nombre a la izquierda */
     gap: 8px;
-
     text-shadow: 1px 1px 2px #fff, -1px -1px 2px #aaa;
     color: #bebebe;
-
     background-color: #e0e0e0; /* fondo oscuro */
     padding: 6px 8px;
     border-radius: 8px; /* bordes redondeados estilo iOS */
@@ -405,6 +451,7 @@ button {
 .aptitud-nombre {
     flex-shrink: 0; /* evita que se comprima el texto */
     color: #555;
+    font-size: 10px;
 }
 
 .aptitud-stars {

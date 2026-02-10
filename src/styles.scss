@@ -36,3 +36,15 @@ body {
   height: 100%;
 }
 /* You can add global styles to this file, and also import other style files */
+/* Efecto de click para botones */
+button[mat-icon-button],
+button {
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+button[mat-icon-button]:active,
+button:active {
+  transform: scale(0.9); /* se encoge un poco */
+  box-shadow: inset 2px 2px 4px rgba(0,0,0,0.3),
+              inset -2px -2px 4px rgba(255,255,255,0.2);
+}

@@ -66,7 +66,56 @@ transform: translateY(-15px);
 }
 }
 
+mat-icon{
+    align-content: center;
+    text-shadow: .5px .5px 1.5px #bebebe, -.5px -.5px 1.5px #ffffff;
+}
+
 .drag-indicator {
 pointer-events: none; /* 👈 no clickeable */
 cursor: default; /* 👈 cursor neutro */
+}
+.toggle-switch {
+  position: relative;
+  width: 28px;   /* más estrecho */
+  height: 50px;  /* más alto */
+  left: 15%;
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: 34px;
+    box-shadow: 1px 1px 2.5px #555, -1px -1px 2.5px #4a4a4a;
+    transition: 0.4s;
+    background: #2a2a2a;
+
+    .icon {
+      position: absolute;
+      height: 20px;
+      width: 20px;
+      left: 4px;
+      top: 4px; /* empieza arriba */
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      transition: 0.4s;
+      background: #2a2a2a;
+      box-shadow: 1px 1px 2.5px #555, -1px -1px 2.5px #4a4a4a;
+    }
+  }
+
+  /* movimiento vertical */
+  input:checked + .slider .icon {
+    transform: translateY(22px); /* baja el ícono */
+    background: #2a2a2a;
+    color: #333;
+  }
 }

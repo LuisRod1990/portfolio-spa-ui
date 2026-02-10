@@ -23,7 +23,13 @@ export class AptitudesCard implements OnInit {
 
   ngOnInit(): void {
     this.state$ = this.store.state$;
-    this.store.loadData();
+  this.store.loadData();
+
+  // Rotador automático cada 3 segundos
+  setInterval(() => {
+    this.store.nextSkillGroup();
+  }, 3000);
+
   }
 
   toggleMenu(): void {

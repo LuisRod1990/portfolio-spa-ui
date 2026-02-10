@@ -23,7 +23,23 @@ import { RouterModule } from '@angular/router';
 })
 export class NavbarComponent {
   menuOpen = true;
+  isDarkTheme = false; // estado inicial
+
   toggleMenu() {
     this.menuOpen = !this.menuOpen;
+  }
+
+  toggleTheme() {
+    this.isDarkTheme = !this.isDarkTheme;
+
+    // Aplica la clase al body o a un contenedor raíz
+    const body = document.body;
+    if (this.isDarkTheme) {
+      body.classList.add('dark-theme');
+      body.classList.remove('light-theme');
+    } else {
+      body.classList.add('light-theme');
+      body.classList.remove('dark-theme');
+    }
   }
 }
