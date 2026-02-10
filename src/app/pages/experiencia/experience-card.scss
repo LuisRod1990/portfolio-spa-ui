@@ -20,23 +20,24 @@ align-items: center;
 }
 
 .experiencia-grid {
-display: grid;
-grid-template-columns: repeat(3, 1fr);
-gap: 2rem;
-max-width: 1000px;
-margin: 0 auto;
-box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 100%;
+  min-width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .experiencia-card {
-padding: 1.5rem;
-border-radius: 20px;
-background: #e0e0e0;
-box-shadow: 9px 9px 16px #bebebe, -9px -9px 16px #ffffff;
-transition: transform 0.3s ease-in-out;
-overflow-wrap: break-word;
-text-shadow: 1px 1px 2px #fff, -1px -1px 2px #aaa;
-will-change: transform, opacity;
+  padding: 1.5rem;
+  border-radius: 20px;
+  background: #e0e0e0;
+  box-shadow: 9px 9px 16px #bebebe, -9px -9px 16px #ffffff;
+  transition: transform 0.3s ease-in-out;
+  overflow-wrap: break-word;
+  text-shadow: 1px 1px 2px #fff, -1px -1px 2px #aaa;
+  will-change: transform, opacity;
 }
 
 .experiencia-card:hover {
@@ -45,18 +46,17 @@ transform: translateY(-5px);
 
 /* Estado expandido */
 .experiencia-card.expanded {
-position: absolute;
-top: 0;
-left: 0;
-width: 95%;
-min-height: 100vh;
-margin: 0;
-padding: 2rem;
-z-index: 999;
-overflow-y: visible;
-overflow-x: hidden;
-border-radius: 0;
-box-shadow: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-height: 100vh;
+  margin: 0;
+  padding: 2rem;
+  z-index: 999;
+  overflow-y: visible;
+  overflow-x: hidden;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 /* Flechas */
