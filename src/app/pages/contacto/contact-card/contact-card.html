@@ -18,6 +18,7 @@
           height="70"
           class="foto-perfil"
         />
+        <br>
         <div class="card-header-info">
           <mat-card-subtitle class="nombre">
             {{ state.contacto.nombre }} {{ state.contacto.apellidos }}
@@ -26,10 +27,7 @@
             ({{ state.contacto.titulo ?? 'Sin título' }})
           </mat-card-subtitle>
         </div>
-      </div>
-      
-      <br>
-      <div class="header-left">
+        <br>
         <div class="info-item-no-background">
           <span>{{ state.contacto.fechanacimiento | date:'longDate' }}</span>
           <mat-icon>calendar_today</mat-icon>
@@ -46,25 +44,30 @@
             <span>{{ state.contacto.direccion ?? 'Sin dirección' }} </span>
             <mat-icon>location_on</mat-icon>
           </div>
-        </div>
-      
-      
-      <div class="header-left">
-        <div class="info-item-no-background" matTooltip="RFC">
-          <span>RFC: {{ state.contacto.rfc  ?? 'Sin RFC' }} </span
-          ><mat-icon>badge</mat-icon>
-        </div>
-        <div class="info-item-no-background" matTooltip="Cédula Profesional">
-          <span
-            >Cédula Profesional:
-            {{ state.contacto.cedula  ?? 'Sin Cédula' }} </span
-          ><mat-icon>verified</mat-icon>
-        </div>
-        <div class="info-item-no-background" matTooltip="CURP">
-          <span>Curp: {{ state.contacto.curp  ?? 'Sin CURP' }} </span
-          ><mat-icon>fingerprint</mat-icon>
-        </div>
+        
       </div>
+      
+      <br>
+      <div class="header-left">
+        <br>
+        <br>
+        <br>
+        <div class="info-item-no-background" matTooltip="RFC">
+            <span>RFC: {{ state.contacto.rfc  ?? 'Sin RFC' }} </span
+            ><mat-icon>badge</mat-icon>
+          </div>
+          <div class="info-item-no-background" matTooltip="Cédula Profesional">
+            <span
+              >Cédula Profesional:
+              {{ state.contacto.cedula  ?? 'Sin Cédula' }} </span
+            ><mat-icon>verified</mat-icon>
+          </div>
+          <div class="info-item-no-background" matTooltip="CURP">
+            <span>Curp: {{ state.contacto.curp  ?? 'Sin CURP' }} </span
+            ><mat-icon>fingerprint</mat-icon>
+          </div>
+        </div>
+      
       
       
 
