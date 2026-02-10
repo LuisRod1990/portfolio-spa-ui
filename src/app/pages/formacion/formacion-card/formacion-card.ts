@@ -33,7 +33,7 @@ export class FormacionCardComponent implements OnInit {
     // Rotador automático cada 5 segundos
     setInterval(() => {
       this.store.nextFormacion();
-    }, 5000);
+    }, 10000);
 
   }
 }
