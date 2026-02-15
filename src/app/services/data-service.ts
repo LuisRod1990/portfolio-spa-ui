@@ -17,11 +17,11 @@ export class DataService {
 
   getContacto(id: number): Observable<any> {
     const body = { sp: environment.endpoints.getContacto, usuarioId: id };
-    console.log('DataService → preparando POST getContacto con body:', body);
+    //console.log('DataService → preparando POST getContacto con body:', body);
 
     return this.http.post<any>(environment.dataApi, body).pipe(
       tap(response => {
-        console.log('DataService → respuesta cruda de la API:', response);
+        //console.log('DataService → respuesta cruda de la API:', response);
         if (!response) {
           console.warn('DataService → la respuesta vino vacía');
         }
@@ -40,36 +40,36 @@ export class DataService {
 
   getAptitudes(id: number): Observable<Aptitud[]> {
     const body = { sp: environment.endpoints.getAptitudes, usuarioId: id };
-    console.log('POST getAptitudes con body:', body);
+    //console.log('POST getAptitudes con body:', body);
     return this.http.post<Aptitud[]>(environment.dataApi, body);
   }
 
   getSkills(id: number): Observable<Skill[]> {
     const body = { sp: environment.endpoints.getSkills, usuarioId: id };
-    console.log('POST getSkills con body:', body);
+    //console.log('POST getSkills con body:', body);
     return this.http.post<Skill[]>(environment.dataApi, body);
   }
 
   getExperiencias(id: number): Observable<Experiencia[]> {
     const body = { sp: environment.endpoints.getTotalExperiencia, usuarioId: id };
-    console.log('POST getExperiencias con body:', body);
+    //console.log('POST getExperiencias con body:', body);
     return this.http.post<Experiencia[]>(environment.dataApi, body);
   }
 
   getExperienciaLaboral(id: number): Observable<ExperienciaLaboral[]> {
     const body = { sp: environment.endpoints.getExperiencia, usuarioId: id };
-    console.log('POST getExperienciaLaboral con body:', body);
+    //console.log('POST getExperienciaLaboral con body:', body);
     return this.http.post<ExperienciaLaboral[]>(environment.dataApi, body);
   }
 
    getFormacion(id: number): Observable<Formacion[]> {
      const body = { sp: environment.endpoints.getFormacion, usuarioId: id };
-     console.log('POST getFormacion con body:', body);
+     //console.log('POST getFormacion con body:', body);
      return this.http.post<Formacion[]>(environment.dataApi, body);
    }
    getProyectos(id: number): Observable<Proyecto[]> {
      const body = { sp: environment.endpoints.getProyectosPersonales, usuarioId: id };
-     console.log('POST getProyecto con body:', body);
+     //console.log('POST getProyecto con body:', body);
      return this.http.post<Proyecto[]>(environment.dataApi, body);
    }
 }

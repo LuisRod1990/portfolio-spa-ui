@@ -14,7 +14,7 @@ export class ContactStoreService {
   state$ = this.stateSubject.asObservable();
   constructor(private dataService: DataService) {}
   loadFormacion(usuarioId: number): void {
-  console.log('Iniciando carga de formación...');
+  //console.log('Iniciando carga de formación...');
 
   // Actualiza estado a "loading"
   this.stateSubject.next({
@@ -25,7 +25,7 @@ export class ContactStoreService {
 
   this.dataService.getFormacion(usuarioId).subscribe({
     next: (formacion) => {
-      console.log('Formación recibida:', formacion);
+      //console.log('Formación recibida:', formacion);
 
       this.stateSubject.next({
         ...this.stateSubject.value,
@@ -48,7 +48,7 @@ export class ContactStoreService {
 }
 
   loadContacto(): void {
-    console.log('Iniciando carga de contacto...');
+    //console.log('Iniciando carga de contacto...');
 
     // Indicar que empieza la carga
     this.stateSubject.next({
@@ -59,19 +59,19 @@ export class ContactStoreService {
 
     this.dataService.getContacto(1).subscribe({
       next: (contactos) => {
-        console.log('Respuesta cruda de la API:', contactos);
+        //console.log('Respuesta cruda de la API:', contactos);
 
         // Manejar tanto array como objeto único
         let contacto: any;
         if (Array.isArray(contactos)) {
-          console.log('La API devolvió un arreglo, tomando el primer elemento');
+          //console.log('La API devolvió un arreglo, tomando el primer elemento');
           contacto = contactos.length > 0 ? contactos[0] : null;
         } else {
-          console.log('La API devolvió un objeto único');
+          //console.log('La API devolvió un objeto único');
           contacto = contactos;
         }
 
-        console.log('Contacto seleccionado:', contacto);
+        //console.log('Contacto seleccionado:', contacto);
 
         if (!contacto) {
           console.warn('No se encontró contacto en la respuesta');
@@ -91,7 +91,7 @@ export class ContactStoreService {
             : null
         };
 
-        console.log('Contacto normalizado listo:', contactoNormalizado);
+        //console.log('Contacto normalizado listo:', contactoNormalizado);
 
         this.stateSubject.next({
           loading: false,
@@ -102,7 +102,7 @@ export class ContactStoreService {
       },
       error: (err) => {
         console.error('Error al cargar contacto:', err);
-        console.log('Respuesta completa del error:', err);
+        //console.log('Respuesta completa del error:', err);
 
         this.stateSubject.next({
           loading: false,
@@ -121,7 +121,7 @@ export class ContactStoreService {
         console.warn('Fecha inválida, no se pudo parsear:', fecha);
         return null;
       }
-      console.log('Fecha parseada correctamente:', parsed);
+      //console.log('Fecha parseada correctamente:', parsed);
       return parsed;
     } catch {
       console.error('Excepción al parsear fecha:', fecha);

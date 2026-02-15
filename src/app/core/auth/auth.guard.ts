@@ -20,7 +20,7 @@ export class AuthGuard {
 
     // Caso 1: Token válido en localStorage
     if (token && issuedAt && Date.now() - issuedAt < this.TOKEN_TTL) {
-      console.log('Token válido encontrado en localStorage');
+      //console.log('Token válido encontrado en localStorage');
       return of(true);
     }
 
@@ -28,7 +28,7 @@ export class AuthGuard {
     if (token && issuedAt && Date.now() - issuedAt >= this.TOKEN_TTL) {
       const refreshToken = this.tokenStorage.getRefreshToken();
       if (refreshToken) {
-        console.log('Token expirado, intentando refresh...');
+        //console.log('Token expirado, intentando refresh...');
         return this.authService.refreshToken(refreshToken).pipe(
           map(tokens => {
             this.tokenStorage.saveTokens(tokens.accessToken, tokens.refreshToken);

@@ -9,10 +9,10 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 @Component({ selector: 'app-contact-card', standalone: true, imports: [ MatIconModule, MatTooltipModule, MatCardImage, Loading, MatCardHeader, MatCardSubtitle, MatCardContent, MatCardModule, CommonModule, MatFormFieldModule ], templateUrl: './contact-card.html', styleUrls: ['./contact-card.scss'], }) export class ContactCardComponent implements OnInit { state$!: Observable<ContactState>; photoUrl: string = 'assets/images/FOTO_CV.png'; photoName: string = 'Luis Rodríguez'; constructor(private store: ContactStoreService, private logService: LogService) {}
 ngOnInit(): void { try { console.log('ContactCardComponent inicializado, cargando contacto...'); this.state$ = this.store.state$;
   this.store.loadContacto();
-  console.log('loadContacto() llamado');
+  //console.log('loadContacto() llamado');
 
   this.store.loadFormacion(1);
-  console.log('loadFormacion() llamado');
+  //console.log('loadFormacion() llamado');
 } catch (error: any) {
   this.logService.logError('Error en ContactCardComponent', error.stack);
 }
