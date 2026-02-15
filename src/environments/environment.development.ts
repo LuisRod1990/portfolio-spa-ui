@@ -2,6 +2,7 @@ export const environment = {
   production: false,
   authApi: 'https://portfolio-lrguez.duckdns.org/api/auth',
   dataApi: 'https://portfolio-lrguez.duckdns.org/api/portfolio',
+  
   endpoints: {
     login: '/login',
     refresh: '/refresh',
