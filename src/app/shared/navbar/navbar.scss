@@ -1,7 +1,7 @@
 .floating-navbar {
 position: fixed;
 bottom: 0%;
-right: -2%;
+left: 2%;
 transform: translateX(-50%);
 display: flex;
 flex-direction: column; /* vertical */
@@ -97,8 +97,8 @@ cursor: default; /* 👈 cursor neutro */
 
     .icon {
       position: absolute;
-      height: 20px;
-      width: 20px;
+      height: 15px;
+      width: 15px;
       left: 4px;
       top: 4px; /* empieza arriba */
       border-radius: 50%;
