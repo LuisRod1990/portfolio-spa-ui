@@ -12,6 +12,7 @@ export const environment = {
     getFormacion: 'get_formacion',
     getSkills: 'get_skills',
     getTotalExperiencia: 'get_totalexperiencia',
+    getProyectosPersonales: 'get_proyectospersonales',
   },
   auth: {
     username: 'luisrodj1990@gmail.com',

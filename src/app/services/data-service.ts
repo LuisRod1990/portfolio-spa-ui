@@ -8,7 +8,7 @@ import { Aptitud } from '../models/aptitud';
 import { Experiencia } from '../models/experiencia-total';
 import { ExperienciaLaboral } from '../models/experiencia-laboral';
 import { Formacion } from '../models/formacion';
-
+import { Proyecto } from '../models/proyecto';
 @Injectable({
   providedIn: 'root'
 })
@@ -66,5 +66,10 @@ export class DataService {
      const body = { sp: environment.endpoints.getFormacion, usuarioId: id };
      console.log('POST getFormacion con body:', body);
      return this.http.post<Formacion[]>(environment.dataApi, body);
+   }
+   getProyectos(id: number): Observable<Proyecto[]> {
+     const body = { sp: environment.endpoints.getProyectosPersonales, usuarioId: id };
+     console.log('POST getProyecto con body:', body);
+     return this.http.post<Proyecto[]>(environment.dataApi, body);
    }
 }

@@ -1,0 +1,38 @@
+<ng-container *ngIf="state$ | async as state">
+  <app-loading *ngIf="state.loading"></app-loading>
+
+  <div class="proyectos-grid" *ngIf="!state.loading && !state.error">
+    <mat-card *ngFor="let p of state.proyectos" class="proyecto-card neumorphic" (click)="selectProyecto(p)">
+      <mat-card-header>
+        <mat-card-title>{{ p.titulo }}</mat-card-title>
+        <mat-card-subtitle>{{ p.fechacreacion | date:'yyyy-MM-dd' }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{ p.descripcion }}</p>
+        <p><strong>Tecnologías:</strong> {{ p.tecnologias }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-overlay" *ngIf="state.selectedProyecto">
+    <div class="modal neumorphic">
+      <button mat-icon-button class="close-btn" (click)="closeProyecto()">
+        <mat-icon>close</mat-icon>
+      </button>
+      <h2>{{ state.selectedProyecto.titulo }}</h2>
+      <iframe [src]="safeUrl" frameborder="0" class="iframe-proyecto"></iframe>
+      <div class="tecnologias-links">
+        <a *ngIf="state.selectedProyecto.urltecnologia1" [href]="state.selectedProyecto.urltecnologia1" target="_blank">Tech 1</a>
+        <a *ngIf="state.selectedProyecto.urltecnologia2" [href]="state.selectedProyecto.urltecnologia2" target="_blank">Tech 2</a>
+        <a *ngIf="state.selectedProyecto.urltecnologia3" [href]="state.selectedProyecto.urltecnologia3" target="_blank">Tech 3</a>
+        <a *ngIf="state.selectedProyecto.urltecnologia4" [href]="state.selectedProyecto.urltecnologia4" target="_blank">Tech 4</a>
+        <a *ngIf="state.selectedProyecto.urltecnologia5" [href]="state.selectedProyecto.urltecnologia5" target="_blank">Tech 5</a>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="state.error" class="error-msg">
+    {{ state.error }}
+  </div>
+</ng-container>

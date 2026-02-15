@@ -4,14 +4,15 @@ export const environment = {
   dataApi: 'https://portfolio-lrguez.duckdns.org/api/Portfolio',
 
   endpoints: {
-    login: 'login',
-    refresh: 'refresh',
-    getContacto: 'Get_Contact',
-    getAptitudes: 'Get_Aptitudes',
-    getExperiencia: 'Get_Experiencia',
-    getFormacion: 'Get_Formacion',
-    getSkills: 'Get_Skills',
-    getTotalExperiencia: 'Get_TotalExperiencia',
+    login: '/login',
+    refresh: '/refresh',
+    getContacto: 'get_contact',
+    getAptitudes: 'get_aptitudes',
+    getExperiencia: 'get_experiencia',
+    getFormacion: 'get_formacion',
+    getSkills: 'get_skills',
+    getTotalExperiencia: 'get_totalexperiencia',
+    getProyectosPersonales: 'get_proyectospersonales',
   },
   auth: {
     username: 'luisrodj1990@gmail.com',

@@ -4,6 +4,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { AptitudesCard } from './pages/aptitudes/skills-card/skills-card';
 import { FormacionCardComponent } from './pages/formacion/formacion-card/formacion-card';
 import { ExperienciaLaboralCard } from './pages/experiencia/experience-card';
+import { ProyectosCardComponent } from './pages/proyectos/proyectos-card/proyectos-card';
 import { AuthGuard } from './core/auth/auth.guard';
 import { FormacionStoreService } from './pages/formacion/formacion-card/state/formacion-store';
 
@@ -13,6 +14,7 @@ export const routes: Routes = [
   { path: 'formacion', component: FormacionCardComponent },
   { path: 'experiencia', component: ExperienciaLaboralCard },
   { path: 'aptitudes', component: AptitudesCard },
+  { path: 'proyectos', component: ProyectosCardComponent },
   //{ path: 'login', component: LoginComponent },
   { path: '**', redirectTo: '' }
 ];
