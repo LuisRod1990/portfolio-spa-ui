@@ -11,10 +11,10 @@ import { FormacionStoreService } from './pages/formacion/formacion-card/state/fo
 export const routes: Routes = [
   { path: '', component: ContactCardComponent, canActivate: [AuthGuard] },
   { path: 'contacto', component: ContactCardComponent, canActivate: [AuthGuard] },
-  { path: 'formacion', component: FormacionCardComponent },
-  { path: 'experiencia', component: ExperienciaLaboralCard },
-  { path: 'aptitudes', component: AptitudesCard },
-  { path: 'proyectos', component: ProyectosCardComponent },
+  { path: 'formacion', component: FormacionCardComponent, canActivate: [AuthGuard] },
+  { path: 'experiencia', component: ExperienciaLaboralCard, canActivate: [AuthGuard] },
+  { path: 'aptitudes', component: AptitudesCard, canActivate: [AuthGuard] },
+  { path: 'proyectos', component: ProyectosCardComponent, canActivate: [AuthGuard] },
   //{ path: 'login', component: LoginComponent },
   { path: '**', redirectTo: '' }
 ];
