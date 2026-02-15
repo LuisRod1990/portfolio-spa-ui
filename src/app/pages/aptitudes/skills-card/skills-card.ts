@@ -22,14 +22,14 @@ export class AptitudesCard implements OnInit {
   constructor(private store: AptitudesStoreService) {}
 
   ngOnInit(): void {
+    // El guard ya garantiza que hay sesión válida antes de entrar aquí
     this.state$ = this.store.state$;
-  this.store.loadData();
+    this.store.loadData();
 
-  // Rotador automático cada 3 segundos
-  setInterval(() => {
-    this.store.nextSkillGroup();
-  }, 3000);
-
+    // Rotador automático cada 3 segundos
+    setInterval(() => {
+      this.store.nextSkillGroup();
+    }, 3000);
   }
 
   toggleMenu(): void {
