@@ -95,3 +95,26 @@
 .tecnologias-links a:hover {
   transform: scale(1.1);
 }
+
+.link-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.visualizar-btn {
+  background: rgba(25, 118, 210, 0.1);
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  color: #1976d2;
+
+  mat-icon {
+    font-size: 28px;
+  }
+
+  &:hover {
+    background: rgba(25, 118, 210, 0.2);
+    transform: scale(1.1);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  }
+}

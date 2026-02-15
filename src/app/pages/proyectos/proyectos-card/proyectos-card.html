@@ -6,6 +6,15 @@
       <mat-card-header>
         <mat-card-title>{{ p.titulo }}</mat-card-title>
         <mat-card-subtitle>{{ p.fechacreacion | date:'yyyy-MM-dd' }}</mat-card-subtitle>
+        <mat-card-content>
+        <div class="link-container">
+          <button mat-icon-button matTooltip="Visualizar" class="visualizar-btn">
+            <mat-icon>open_in_browser</mat-icon>
+          </button>
+        </div>
+      </mat-card-content>
+        
+
       </mat-card-header>
       <mat-card-content>
         <p>{{ p.descripcion }}</p>
@@ -20,7 +29,15 @@
       <button mat-icon-button class="close-btn" (click)="closeProyecto()">
         <mat-icon>close</mat-icon>
       </button>
-      <h2>{{ state.selectedProyecto.titulo }}</h2>
+      <h3>{{ state.selectedProyecto.titulo }}</h3>
+      <mat-card-content>
+          <div class="link-container" *ngIf="state.selectedProyecto.url">
+            <a [href]="state.selectedProyecto.url" target="_blank" class="cool-link">
+              <mat-icon>open_in_new</mat-icon>
+              Abrir en otra ventana: {{ state.selectedProyecto.urltecnologia8 }}
+            </a>
+          </div>
+        </mat-card-content>
       <iframe [src]="safeUrl" frameborder="0" class="iframe-proyecto"></iframe>
       <div class="tecnologias-links">
         <a *ngIf="state.selectedProyecto.urltecnologia1" [href]="state.selectedProyecto.urltecnologia1" target="_blank">Tech 1</a>
