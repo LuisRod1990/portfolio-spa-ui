@@ -263,7 +263,7 @@ mat-icon {
   display: flex;
   align-items: center;
   gap: 4px;
-  font-size: 0.65rem; /* 👈 reducido */
+  font-size: 0.65rem; /* reducido */
   color: #444;
   //background: #e0e0e0;
   background: greenyellow;
@@ -333,6 +333,6 @@ mat-icon {
 
 app-info-icon {
   position: absolute;
-  top: 25px;
-  left: 25px;
+  top: 5px;
+  left: 5px;
 }
