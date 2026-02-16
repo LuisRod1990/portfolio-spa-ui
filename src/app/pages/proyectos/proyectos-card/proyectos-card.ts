@@ -4,13 +4,13 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
-
 import { Observable } from 'rxjs';
 import { ProyectoState } from '../../../models/proyecto-state';
 import { Proyecto } from '../../../models/proyecto';
 import { ProyectosStoreService } from './state/proyectos-store';
 import { Loading } from '../../../shared/loading/loading';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { InfoIconComponent } from '../../../info-icon/info-icon'; 
 @Component({
   selector: 'app-proyectos-card',
   standalone: true,
@@ -20,6 +20,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
     MatIconModule,
     MatButtonModule,
     MatTooltipModule,
+    InfoIconComponent,
     Loading
     
   ],

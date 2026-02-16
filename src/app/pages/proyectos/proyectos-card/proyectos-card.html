@@ -13,29 +13,36 @@
         <div class="row">
           <div class="row">
             <div class="col-sm-9">
-              <h2>{{ p.titulo }}</h2>
+              <mat-card-title>
+                {{ p.titulo }}   
+                  <button 
+                    mat-icon-button 
+                    matTooltip="Visualizar Sitio en Miniatura"
+                    *ngIf="p.estatus === true"
+                    class="ripple-button">
+                    <mat-icon>open_in_browser</mat-icon>
+                    <span class="ripple"></span>
+                  </button>
+              </mat-card-title>
             </div>
             <div class="col-sm-12">{{ p.fechacreacion | date:'yyyy-MM-dd' }}</div>
             <div class="row">
             <mat-card-content>
               <div class="tecnologias-links">
-                <img [src]="p.urltecnologia1" alt="Tech 1">
-                <img [src]="p.urltecnologia2" alt="Tech 2">
-                <img [src]="p.urltecnologia3" alt="Tech 3">
-                <img [src]="p.urltecnologia4" alt="Tech 4">
-                <img [src]="p.urltecnologia5" alt="Tech 5">  
-                <img [src]="p.urltecnologia6" alt="Tech 6">
-                <img [src]="p.urltecnologia7" alt="Tech 7">
+                <mat-card-content>
+                  <img [src]="p.urltecnologia1" alt="Tech 1">
+                  <img [src]="p.urltecnologia2" alt="Tech 2">
+                  <img [src]="p.urltecnologia3" alt="Tech 3">
+                  <img [src]="p.urltecnologia4" alt="Tech 4">
+                </mat-card-content>
+                <mat-card-content>
+                  <img [src]="p.urltecnologia5" alt="Tech 5">  
+                  <img [src]="p.urltecnologia6" alt="Tech 6">
+                  <img [src]="p.urltecnologia7" alt="Tech 7">
+                  <img [src]="p.urltecnologia8" alt="Tech 8">
+                </mat-card-content>
               </div>
             </mat-card-content>
-            </div>
-            <div class="col-sm-12">
-              <button 
-                mat-icon-button 
-                matTooltip="Visualizar Sitio en Miniatura"
-                *ngIf="p.estatus === true">
-                <mat-icon>open_in_browser</mat-icon>
-              </button>
             </div>
           </div>
         </div>        
@@ -60,7 +67,7 @@
       <mat-card-content>
           <div class="link-container" *ngIf="state.selectedProyecto.url">
             <a [href]="state.selectedProyecto.url" target="_blank" class="cool-link"  matTooltip="Visitar el sitio">
-               Abrir en otra ventana: {{ state.selectedProyecto.urltecnologia8 }}
+               Abrir en otra ventana: {{ state.selectedProyecto.urlsitioaws }}
               <mat-icon> open_in_new </mat-icon>
             </a>
             
@@ -75,4 +82,8 @@
   <div *ngIf="state.error" class="error-msg">
     {{ state.error }}
   </div>
+  <div class="contenedor">
+    <app-info-icon tooltipText="Click para visualizar el sitio en miniatura. Los proyectos que no cuentan con botón, no están disponibles por el momento."></app-info-icon>
+  </div>
 </ng-container>
+

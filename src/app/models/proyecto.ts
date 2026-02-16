@@ -15,4 +15,5 @@ export interface Proyecto {
   urltecnologia8?: string;
   estatus: boolean;
   visible: boolean;
+  urlsitioaws?: string; 
 }

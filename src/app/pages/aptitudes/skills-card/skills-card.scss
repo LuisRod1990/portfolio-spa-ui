@@ -569,3 +569,13 @@ transform: translateY(-15px);
     pointer-events: none;
     cursor: default;
 }
+
+.contenedor-info {
+  position: relative; /* importante para que el hijo se posicione respecto a este contenedor */
+}
+
+app-info-icon {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+}

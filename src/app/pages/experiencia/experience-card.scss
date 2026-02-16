@@ -189,3 +189,13 @@ display: block;
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.contenedor-info {
+  position: relative; /* importante para que el hijo se posicione respecto a este contenedor */
+}
+
+app-info-icon {
+  position: absolute;
+  top: 35px;
+  left: 35px;
+}

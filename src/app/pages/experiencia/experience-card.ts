@@ -7,11 +7,11 @@ import { ExperienciaState } from '../../models/experiencia-state';
 import { ExperienciaStoreService } from '../contacto/contact-card/state/experiencia-state';
 import { MatIcon } from '@angular/material/icon';
 import { ChangeDetectorRef } from '@angular/core';
-
+import { InfoIconComponent } from '../../info-icon/info-icon'; 
 @Component({
   selector: 'app-experiencia-laboral-card',
   standalone: true,
-  imports: [CommonModule, Loading, MatTooltipModule, MatIcon],
+  imports: [CommonModule, Loading, MatTooltipModule, MatIcon, InfoIconComponent],
   templateUrl: './experience-card.html',
   styleUrls: ['./experience-card.scss'],
 })
