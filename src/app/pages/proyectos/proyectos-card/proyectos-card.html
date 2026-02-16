@@ -1,18 +1,45 @@
 <ng-container *ngIf="state$ | async as state">
   <app-loading *ngIf="state.loading"></app-loading>
 
+  <!-- LARJ: Deshabilitado temporalmente -->
   <div class="proyectos-grid" *ngIf="!state.loading && !state.error">
-    <mat-card *ngFor="let p of state.proyectos" class="proyecto-card neumorphic" (click)="selectProyecto(p)">
+    <mat-card 
+      *ngFor="let p of state.proyectos" 
+      class="proyecto-card neumorphic" 
+      (click)="p.estatus === false ? $event.stopPropagation() : selectProyecto(p)"
+      [class.disabled]="p.estatus === false"
+    >
       <mat-card-header>
-        <mat-card-title>{{ p.titulo }}</mat-card-title>
-        <mat-card-subtitle>{{ p.fechacreacion | date:'yyyy-MM-dd' }}</mat-card-subtitle>
-        <mat-card-content>
-        <div class="link-container">
-          <button mat-icon-button matTooltip="Visualizar" class="visualizar-btn">
-            <mat-icon>open_in_browser</mat-icon>
-          </button>
-        </div>
-      </mat-card-content>
+        <div class="row">
+          <div class="row">
+            <div class="col-sm-9">
+              <h2>{{ p.titulo }}</h2>
+            </div>
+            <div class="col-sm-12">{{ p.fechacreacion | date:'yyyy-MM-dd' }}</div>
+            <div class="row">
+            <mat-card-content>
+              <div class="tecnologias-links">
+                <img [src]="p.urltecnologia1" alt="Tech 1">
+                <img [src]="p.urltecnologia2" alt="Tech 2">
+                <img [src]="p.urltecnologia3" alt="Tech 3">
+                <img [src]="p.urltecnologia4" alt="Tech 4">
+                <img [src]="p.urltecnologia5" alt="Tech 5">  
+                <img [src]="p.urltecnologia6" alt="Tech 6">
+                <img [src]="p.urltecnologia7" alt="Tech 7">
+              </div>
+            </mat-card-content>
+            </div>
+            <div class="col-sm-12">
+              <button 
+                mat-icon-button 
+                matTooltip="Visualizar Sitio en Miniatura"
+                *ngIf="p.estatus === true">
+                <mat-icon>open_in_browser</mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>        
+      
         
 
       </mat-card-header>
@@ -32,20 +59,16 @@
       <h3>{{ state.selectedProyecto.titulo }}</h3>
       <mat-card-content>
           <div class="link-container" *ngIf="state.selectedProyecto.url">
-            <a [href]="state.selectedProyecto.url" target="_blank" class="cool-link">
-              <mat-icon>open_in_new</mat-icon>
-              Abrir en otra ventana: {{ state.selectedProyecto.urltecnologia8 }}
+            <a [href]="state.selectedProyecto.url" target="_blank" class="cool-link"  matTooltip="Visitar el sitio">
+               Abrir en otra ventana: {{ state.selectedProyecto.urltecnologia8 }}
+              <mat-icon> open_in_new </mat-icon>
             </a>
+            
           </div>
+          <br/>
         </mat-card-content>
       <iframe [src]="safeUrl" frameborder="0" class="iframe-proyecto"></iframe>
-      <div class="tecnologias-links">
-        <a *ngIf="state.selectedProyecto.urltecnologia1" [href]="state.selectedProyecto.urltecnologia1" target="_blank">Tech 1</a>
-        <a *ngIf="state.selectedProyecto.urltecnologia2" [href]="state.selectedProyecto.urltecnologia2" target="_blank">Tech 2</a>
-        <a *ngIf="state.selectedProyecto.urltecnologia3" [href]="state.selectedProyecto.urltecnologia3" target="_blank">Tech 3</a>
-        <a *ngIf="state.selectedProyecto.urltecnologia4" [href]="state.selectedProyecto.urltecnologia4" target="_blank">Tech 4</a>
-        <a *ngIf="state.selectedProyecto.urltecnologia5" [href]="state.selectedProyecto.urltecnologia5" target="_blank">Tech 5</a>
-      </div>
+      
     </div>
   </div>
 

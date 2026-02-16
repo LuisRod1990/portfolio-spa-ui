@@ -13,4 +13,6 @@ export interface Proyecto {
   urltecnologia6?: string;
   urltecnologia7?: string;
   urltecnologia8?: string;
+  estatus: boolean;
+  visible: boolean;
 }
