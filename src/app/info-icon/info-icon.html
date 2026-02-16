@@ -2,13 +2,12 @@
   <button mat-icon-button matTooltip="{{ tooltipText }}" class="info-ripple">
     <mat-icon>info</mat-icon>
     <span class="pulse"></span>
+    
   </button>
-  <!-- Label temporal con fade-out -->
   <span 
-    class="info-label" 
-    *ngIf="showLabel" 
-    [class.fade-out]="fadingOut">
-    <!--{{ tooltipText }}-->
-     Información.
-  </span>
+      class="info-label" 
+      *ngIf="showLabel" 
+      [class.fade-out]="fadingOut">
+      {{ tooltipText }}
+    </span>
 </div>

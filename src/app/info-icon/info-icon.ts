@@ -34,6 +34,6 @@ export class InfoIconComponent implements OnInit {
         this.showLabel = false;
         this.cdr.detectChanges(); // vuelve a refrescar
       }, 500); // duración del fade-out
-    }, 1000); // tiempo visible antes de desaparecer
+    }, 7000); // tiempo visible antes de desaparecer
   }
 }
