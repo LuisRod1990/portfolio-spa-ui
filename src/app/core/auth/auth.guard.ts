@@ -35,10 +35,10 @@ export class AuthGuard {
 
     // Caso 2: Token expirado → login automático en lugar de refresh
     if (token && issuedAt && Date.now() - issuedAt >= this.TOKEN_TTL) {
+      this.tokenStorage.clear();
       console.warn('--> Token expirado, intentando login automático <--');
       this.logTokenStatus(token, issuedAt);
-      this.tokenStorage.clear();
-
+      
       return this.authService.login({
         username: environment.auth.username,
         password: environment.auth.password

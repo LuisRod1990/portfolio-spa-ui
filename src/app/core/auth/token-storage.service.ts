@@ -40,6 +40,8 @@ export class TokenStorageService {
 
   clear(): void {
     localStorage.removeItem(this.TOKEN_KEY);
-    this.tokenSubject.next(null); // avisamos que ya no hay token
+    localStorage.removeItem('refreshToken');
+    localStorage.removeItem('issuedAt');
+    this.tokenSubject.next(null);
   }
 }
