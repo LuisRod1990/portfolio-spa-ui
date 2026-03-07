@@ -10,13 +10,17 @@ import { Observable, throwError, BehaviorSubject } from 'rxjs';
 import { catchError, filter, switchMap, take } from 'rxjs/operators';
 import { TokenStorageService } from './token-storage.service';
 import { AuthService } from './auth.service';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
   private isRefreshing = false;
   private refreshTokenSubject = new BehaviorSubject<string | null>(null);
 
-  constructor(private tokenStorage: TokenStorageService, private authService: AuthService) {}
+  constructor(
+    private tokenStorage: TokenStorageService,
+    private authService: AuthService
+  ) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let authReq = req;
@@ -43,26 +47,50 @@ export class AuthInterceptor implements HttpInterceptor {
 
       const refreshToken = this.tokenStorage.getRefreshToken();
       if (refreshToken) {
+        // Intentar refresh
         return this.authService.refreshToken(refreshToken).pipe(
           switchMap(tokens => {
             this.isRefreshing = false;
             this.tokenStorage.saveTokens(tokens.accessToken, tokens.refreshToken);
             this.refreshTokenSubject.next(tokens.accessToken);
-            return next.handle(req.clone({ setHeaders: { Authorization: `Bearer ${tokens.accessToken}` } }));
+            return next.handle(
+              req.clone({ setHeaders: { Authorization: `Bearer ${tokens.accessToken}` } })
+            );
           }),
           catchError(err => {
+            // Si el refresh falla con 401 → login automático
             this.isRefreshing = false;
             this.tokenStorage.clear();
-            return throwError(() => err);
+            console.warn('Refresh falló con 401, intentando login automático...');
+
+            return this.authService.login({
+              username: environment.auth.username,
+              password: environment.auth.password
+            }).pipe(
+              switchMap(tokens => {
+                this.tokenStorage.saveTokens(tokens.accessToken, tokens.refreshToken);
+                this.refreshTokenSubject.next(tokens.accessToken);
+                return next.handle(
+                  req.clone({ setHeaders: { Authorization: `Bearer ${tokens.accessToken}` } })
+                );
+              }),
+              catchError(loginErr => {
+                console.error('Login automático falló:', loginErr);
+                return throwError(() => loginErr);
+              })
+            );
           })
         );
       }
     }
 
+    // Si ya hay un refresh en curso, esperar a que se complete
     return this.refreshTokenSubject.pipe(
       filter(token => token != null),
       take(1),
-      switchMap(token => next.handle(req.clone({ setHeaders: { Authorization: `Bearer ${token}` } })))
+      switchMap(token =>
+        next.handle(req.clone({ setHeaders: { Authorization: `Bearer ${token}` } }))
+      )
     );
   }
 }
